@@ -1,4 +1,4 @@
-## 个人简历
+## about me
 
 ### 联系方式
  - E-mail：1zoxun1@gmail.com
@@ -6,10 +6,8 @@
 ### 个人信息
  - ghostwritten/man/1995
  - 本科
- - 工作年限：3年
- - 技术博客：
-   github: https://ghostwritten.github.io/
-   CDSN: https://blog.csdn.net/xixihahalelehehe
+ - github: https://ghostwritten.github.io/
+ - CDSN: https://blog.csdn.net/xixihahalelehehe
 
 ### 工作经历
 
