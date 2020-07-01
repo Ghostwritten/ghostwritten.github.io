@@ -49,6 +49,8 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
 
+
+
 # Permalinks
 permalink                    : posts/:slug
 
@@ -61,9 +63,12 @@ paginate_path                : '/page-:num/'
 
 # Tags
 collections:
-  my_tags:
+  # my_tags:
+  #   output: true
+  #   permalink: /tag/:slug/
+  posts:
     output: true
-    permalink: /tag/:slug/
+    sidebar_label: News
 defaults:
   -
     scope:
