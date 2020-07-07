@@ -1,227 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-    
-    <url>
-      <loc>http://localhost:4000/posts/shell/</loc>
-      
-        <lastmod>2020-07-01T00:00:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.7</priority>
-      
-    </url>
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/posts/shell-%E8%BF%90%E7%AE%97%E7%AC%A6/</loc>
-      
-        <lastmod>2020-03-22T00:00:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.7</priority>
-      
-    </url>
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/posts/welcome-to-dactl/</loc>
-      
-        <lastmod>2017-03-22T00:00:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.7</priority>
-      
-    </url>
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/posts/notices/</loc>
-      
-        <lastmod>2017-03-20T00:00:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.7</priority>
-      
-    </url>
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/posts/config-settings/</loc>
-      
-        <lastmod>2017-03-20T00:00:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.7</priority>
-      
-    </url>
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/posts/yaml-frontmatter/</loc>
-      
-        <lastmod>2017-03-19T00:00:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.7</priority>
-      
-    </url>
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/posts/tags-in-dactyl/</loc>
-      
-        <lastmod>2017-03-18T00:00:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.7</priority>
-      
-    </url>
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/posts/post-excerpts-lead-paragraphs/</loc>
-      
-        <lastmod>2017-03-17T00:00:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.7</priority>
-      
-    </url>
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/posts/footnotes-in-dactl/</loc>
-      
-        <lastmod>2017-03-16T00:00:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.7</priority>
-      
-    </url>
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/posts/example-content/</loc>
-      
-        <lastmod>2017-01-20T00:00:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.7</priority>
-      
-    </url>
-    
-  
-  
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/about/</loc>
-      
-        <lastmod>2020-07-01T12:34:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.5</priority>
-      
-    </url>
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/archive/</loc>
-      
-        <lastmod>2020-07-01T12:34:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.9</priority>
-      
-    </url>
-    
-  
-    
-  
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/</loc>
-      
-        <lastmod>2020-07-01T12:34:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.5</priority>
-      
-    </url>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-    <url>
-      <loc>http://localhost:4000/page-2/</loc>
-      
-        <lastmod>2020-07-01T12:34:00+08:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.5</priority>
-      
-    </url>
-    
-  
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://localhost:4000/chinese-markdown-cheatsheet/</loc>
+<lastmod>2013-07-16T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/document/</loc>
+<lastmod>2019-06-02T00:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/python-list/</loc>
+<lastmod>2020-02-20T00:30:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/python-tuple/</loc>
+<lastmod>2020-02-24T11:30:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/python-dict/</loc>
+<lastmod>2020-02-25T00:30:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/python-err/</loc>
+<lastmod>2020-03-11T12:30:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/printf/</loc>
+<lastmod>2020-03-12T10:25:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/shell-$-string/</loc>
+<lastmod>2020-03-12T13:30:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/shellreturn/</loc>
+<lastmod>2020-03-12T15:40:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/shell-Conditionals/</loc>
+<lastmod>2020-03-12T17:25:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/shelloperator/</loc>
+<lastmod>2020-03-12T23:51:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/shell-scripts-var-declare/</loc>
+<lastmod>2020-03-18T12:30:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/shelll-etc-initd-functions1/</loc>
+<lastmod>2020-06-09T11:00:00+08:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/404/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/about/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/tags/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/archive/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/page2/</loc>
+</url>
 </urlset>
