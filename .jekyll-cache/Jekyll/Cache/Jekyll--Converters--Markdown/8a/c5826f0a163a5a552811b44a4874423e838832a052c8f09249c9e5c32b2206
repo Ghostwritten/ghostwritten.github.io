@@ -1,0 +1,115 @@
+I"t+<h2 id="1-printf介绍">1. <code class="language-plaintext highlighter-rouge">printf</code>介绍</h2>
+
+<p>printf 命令模仿 C 程序库（library）里的 printf() 程序。
+标准所定义，因此使用printf的脚本比使用echo移植性好。</p>
+
+<p>printf 使用引用文本或空格分隔的参数，外面可以在printf中使用格式化字符串，还可以制定字符串的宽度、左右对齐方式等。默认printf不会像 echo 自动添加换行符，我们可以手动添加 \n。</p>
+
+<h2 id="2-printf语法">2. <code class="language-plaintext highlighter-rouge">printf</code>语法</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">printf  </span>format-string  <span class="o">[</span>arguments...]
+</code></pre></div></div>
+
+<p>参数说明：</p>
+
+<ul>
+  <li>format-string: 为格式控制字符串</li>
+  <li>arguments: 为参数列表。</li>
+</ul>
+
+<p>实例如下：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"Hello, Shell"</span>
+Hello, Shell
+<span class="nv">$ </span><span class="nb">printf</span> <span class="s2">"Hello, Shell</span><span class="se">\n</span><span class="s2">"</span>
+Hello, Shell
+</code></pre></div></div>
+
+<h2 id="3--printf实战">3.  <code class="language-plaintext highlighter-rouge">printf</code>实战</h2>
+<h3 id="31-printf-格式替代符">3.1 printf 格式替代符</h3>
+<p>实例1：</p>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span><span class="w">
+</span><span class="nf">printf</span><span class="w"> </span><span class="s2">"%-10s %-8s %-4s\n"</span><span class="w"> </span><span class="err">姓名</span><span class="w"> </span><span class="err">性别</span><span class="w"> </span><span class="err">体重</span><span class="nx">kg</span><span class="w">  
+</span><span class="nf">printf</span><span class="w"> </span><span class="s2">"%-10s %-8s %-4.2f\n"</span><span class="w"> </span><span class="err">郭靖</span><span class="w"> </span><span class="err">男</span><span class="w"> </span><span class="nx">66.1234</span><span class="w"> 
+</span><span class="nf">printf</span><span class="w"> </span><span class="s2">"%-10s %-8s %-4.2f\n"</span><span class="w"> </span><span class="err">杨过</span><span class="w"> </span><span class="err">男</span><span class="w"> </span><span class="nx">48.6543</span><span class="w"> 
+</span><span class="nf">printf</span><span class="w"> </span><span class="s2">"%-10s %-8s %-4.2f\n"</span><span class="w"> </span><span class="err">郭芙</span><span class="w"> </span><span class="err">女</span><span class="w"> </span><span class="nx">47.9876</span><span class="w">
+</span></code></pre></div></div>
+
+<p>执行脚本，输出结果如下所示：</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">姓名</span><span class="w">     </span><span class="err">性别</span><span class="w">   </span><span class="err">体重</span><span class="nf">kg</span><span class="w">
+</span><span class="err">郭靖</span><span class="w">     </span><span class="err">男</span><span class="w">      </span><span class="nx">66.12</span><span class="w">
+</span><span class="err">杨过</span><span class="w">     </span><span class="err">男</span><span class="w">      </span><span class="mf">48.65</span><span class="w">
+</span><span class="err">郭芙</span><span class="w">     </span><span class="err">女</span><span class="w">      </span><span class="mf">47.99</span><span class="w">
+</span></code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">%s %c %d %f</code>都是格式替代符</p>
+
+<p><code class="language-plaintext highlighter-rouge">%-10s</code> 指一个宽度为10个字符（-表示左对齐，没有则表示右对齐），任何字符都会被显示在10个字符宽的字符内，如果不足则自动以空格填充，超过也会将内容全部显示出来。</p>
+
+<p><code class="language-plaintext highlighter-rouge">%-4.2f</code> 指格式化为小数，其中.2指保留2位小数。</p>
+
+<p>实例2：</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span><span class="w">
+</span><span class="c"># format-string为双引号</span><span class="w">
+</span><span class="nf">printf</span><span class="w"> </span><span class="s2">"%d %s\n"</span><span class="w"> </span><span class="nx">1</span><span class="w"> </span><span class="s2">"abc"</span><span class="w">
+ 
+</span><span class="c"># 单引号与双引号效果一样 </span><span class="w">
+</span><span class="nf">printf</span><span class="w"> </span><span class="s1">'%d %s\n'</span><span class="w"> </span><span class="nx">1</span><span class="w"> </span><span class="s2">"abc"</span><span class="w"> 
+ 
+</span><span class="c"># 没有引号也可以输出</span><span class="w">
+</span><span class="nf">printf</span><span class="w"> </span><span class="o">%</span><span class="nx">s</span><span class="w"> </span><span class="nx">abcdef</span><span class="w">
+ 
+</span><span class="c"># 格式只指定了一个参数，但多出的参数仍然会按照该格式输出，format-string 被重用</span><span class="w">
+</span><span class="nf">printf</span><span class="w"> </span><span class="o">%</span><span class="nx">s</span><span class="w"> </span><span class="nx">abc</span><span class="w"> </span><span class="nx">def</span><span class="w">
+ 
+</span><span class="nf">printf</span><span class="w"> </span><span class="s2">"%s\n"</span><span class="w"> </span><span class="nx">abc</span><span class="w"> </span><span class="nx">def</span><span class="w">
+ 
+</span><span class="nf">printf</span><span class="w"> </span><span class="s2">"%s %s %s\n"</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="nx">d</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="nx">f</span><span class="w"> </span><span class="nx">g</span><span class="w"> </span><span class="nx">h</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="nx">j</span><span class="w">
+ 
+</span><span class="c"># 如果没有 arguments，那么 %s 用NULL代替，%d 用 0 代替</span><span class="w">
+</span><span class="nf">printf</span><span class="w"> </span><span class="s2">"%s and %d \n"</span><span class="w">
+</span></code></pre></div></div>
+
+<p>执行脚本，输出结果如下所示：</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">1</span><span class="w"> </span><span class="nf">abc</span><span class="w">
+</span><span class="nx">1</span><span class="w"> </span><span class="nx">abc</span><span class="w">
+</span><span class="nf">abcdefabcdefabc</span><span class="w">
+</span><span class="nx">def</span><span class="w">
+</span><span class="nf">a</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="nx">c</span><span class="w">
+</span><span class="nf">d</span><span class="w"> </span><span class="nx">e</span><span class="w"> </span><span class="nx">f</span><span class="w">
+</span><span class="nf">g</span><span class="w"> </span><span class="nx">h</span><span class="w"> </span><span class="nx">i</span><span class="w">
+</span><span class="nf">j</span><span class="w">  
+ </span><span class="nf">and</span><span class="w"> </span><span class="nx">0</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="32--printf-的转义序列">3.2  printf 的转义序列</h3>
+
+<p>序列	说明</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="se">\a</span>	警告字符，通常为ASCII的BEL字符
+<span class="se">\b</span>	后退
+<span class="se">\c</span>	抑制（不显示）输出结果中任何结尾的换行字符（只在%b格式指示符控制下的参数字符串中有效），而且，任何留在参数里的字符、任何接下来的参数以及任何留在格式字符串中的字符，都被忽略
+<span class="se">\f</span>	换页（formfeed）
+<span class="se">\n</span>	换行
+<span class="se">\r</span>	回车（Carriage <span class="k">return</span>）
+<span class="se">\t</span>	水平制表符
+<span class="se">\v</span>	垂直制表符
+<span class="se">\\</span>	一个字面上的反斜杠字符
+<span class="se">\d</span><span class="nb">dd	</span>表示1到3位数八进制值的字符。仅在格式字符串中有效
+<span class="se">\0</span>ddd	表示1到3位的八进制值字符
+</code></pre></div></div>
+
+<p>实例</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="kt">root</span><span class="err">@</span><span class="kt">node0001</span><span class="w"> </span><span class="nf">~</span><span class="p">]</span><span class="err">$</span><span class="w"> </span><span class="kt">printf</span><span class="w"> </span><span class="s2">"a string, no processing:&lt;%s&gt;\n"</span><span class="w"> </span><span class="s2">"A\nB"</span><span class="w">
+</span><span class="nf">a</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">processing:</span><span class="err">&lt;</span><span class="nx">A\nB</span><span class="err">&gt;</span><span class="w">
+</span><span class="p">[</span><span class="kt">root</span><span class="err">@</span><span class="kt">node0001</span><span class="w"> </span><span class="nf">~</span><span class="p">]</span><span class="err">$</span><span class="w"> </span><span class="kt">printf</span><span class="w"> </span><span class="s2">"a string, no processing:&lt;%b&gt;\n"</span><span class="w"> </span><span class="s2">"A\nB"</span><span class="w">
+</span><span class="nf">a</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w"> </span><span class="nx">no</span><span class="w"> </span><span class="nx">processing:</span><span class="err">&lt;</span><span class="nx">A</span><span class="w">
+</span><span class="nf">B</span><span class="err">&gt;</span><span class="w">
+</span><span class="p">[</span><span class="kt">root</span><span class="err">@</span><span class="kt">node0001</span><span class="w"> </span><span class="nf">~</span><span class="p">]</span><span class="err">$</span><span class="w"> </span><span class="kt">printf</span><span class="w"> </span><span class="s2">"www.csdn.net \a"</span><span class="w">
+</span><span class="no">www.csdn.</span><span class="kt">net</span><span class="w"> 
+</span></code></pre></div></div>
+:ET

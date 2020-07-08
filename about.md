@@ -14,4 +14,4 @@ permalink: /about/
 
 ## Buy Me A Cup Of Coffee
 <!-- ![image01](https://raw.githubusercontent.com/Ghostwritten/ghostwritten.github.io/master/images/QRcode.png =100x100) -->
-<img src="https://raw.githubusercontent.com/Ghostwritten/ghostwritten.github.io/master/images/QRcode.png" width="100" height="100" alt="AltText" />
+<img src="https://raw.githubusercontent.com/Ghostwritten/ghostwritten.github.io/master/images/QRcode.png" width="100" height="100" alt="AltText" /> 

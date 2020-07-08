@@ -1,0 +1,412 @@
+I"�u<h2 id="1-shell-基本运算符">1. Shell 基本运算符</h2>
+
+<p>Shell 和其他编程语言一样，支持多种运算符，包括：</p>
+
+<ul>
+  <li>算数运算符</li>
+  <li>关系运算符</li>
+  <li>布尔运算符</li>
+  <li>字符串运算符</li>
+  <li>文件测试运算符</li>
+</ul>
+
+<h3 id="11-算数运算符">1.1. 算数运算符</h3>
+
+<p>原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 <code class="language-plaintext highlighter-rouge">awk 和 expr</code>，expr 最常用。</p>
+
+<p>expr 是一款表达式计算工具，使用它能完成表达式的求值操作。</p>
+
+<p>例如，两个数相加(注意使用的是反引号 ` 而不是单引号 ‘)：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#!/bin/bash</span>
+<span class="n">val</span><span class="o">=</span><span class="sb">`expr 2 + 2`</span>
+<span class="n">echo</span> <span class="s2">"两数之和为 : $val"</span></code></pre></figure>
+
+<p>执行脚本，输出结果如下所示：</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">两数之和为</span> <span class="p">:</span> <span class="mi">4</span></code></pre></figure>
+
+<p><strong>两点注意:</strong></p>
+
+<ul>
+  <li>表达式和运算符之间要有空格，例如 2+2 是不对的，必须写成 2 + 2，这与我们熟悉的大多数编程语言不一样。</li>
+  <li>完整的表达式要被 ` ` 包含，注意这个字符不是常用的单引号，在 Esc 键下边。</li>
+</ul>
+
+<p>下表列出了常用的算术运算符，假定变量 a 为 10，变量 b 为 20：</p>
+
+<ul>
+  <li>
+    <p>+加法	<code class="language-plaintext highlighter-rouge">expr $a + $b</code> 结果为 30。</p>
+  </li>
+  <li>–减法	<code class="language-plaintext highlighter-rouge">expr $a – $b</code> 结果为 -10。</li>
+  <li>*乘法	<code class="language-plaintext highlighter-rouge">expr $a \* $b</code> 结果为  200。</li>
+  <li>/	除法	<code class="language-plaintext highlighter-rouge">expr $b / $a</code> 结果为 2。</li>
+  <li>%取余	<code class="language-plaintext highlighter-rouge">expr $b % $a</code> 结果为 0。</li>
+  <li>=赋值	<code class="language-plaintext highlighter-rouge">a=$b</code> 将把变量 b 的值赋给 a。</li>
+  <li>==相等。用于比较两个数字，相同则返回 true。	[ $a == $b ] 返回 false。</li>
+  <li>!=不相等。用于比较两个数字，不相同则返回 true。	[ $a != $b ] 返回 true。
+注意：条件表达式要放在方括号之间，并且要有空格，例如: [$a==$b] 是错误的，必须写成 [ $a == $b ]。</li>
+</ul>
+
+<p>算术运算符实例如下：</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span><span class="w">
+ 
+</span><span class="nf">a</span><span class="o">=</span><span class="mi">10</span><span class="w">
+</span><span class="nf">b</span><span class="o">=</span><span class="mi">20</span><span class="w">
+ 
+</span><span class="nf">val</span><span class="o">=</span><span class="err">`</span><span class="nf">expr</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">$b</span><span class="err">`</span><span class="w">
+</span><span class="nf">echo</span><span class="w"> </span><span class="s2">"a + b : </span><span class="nv">$val</span><span class="s2">"</span><span class="w">
+ 
+</span><span class="nf">val</span><span class="o">=</span><span class="err">`</span><span class="nf">expr</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="nf">-</span><span class="w"> </span><span class="nv">$b</span><span class="err">`</span><span class="w">
+</span><span class="nf">echo</span><span class="w"> </span><span class="s2">"a - b : </span><span class="nv">$val</span><span class="s2">"</span><span class="w">
+ 
+</span><span class="nf">val</span><span class="o">=</span><span class="err">`</span><span class="nf">expr</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="nx">\</span><span class="o">*</span><span class="w"> </span><span class="nv">$b</span><span class="err">`</span><span class="w">
+</span><span class="nf">echo</span><span class="w"> </span><span class="s2">"a * b : </span><span class="nv">$val</span><span class="s2">"</span><span class="w">
+ 
+</span><span class="nf">val</span><span class="o">=</span><span class="err">`</span><span class="nf">expr</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="nx">/</span><span class="w"> </span><span class="nv">$a</span><span class="err">`</span><span class="w">
+</span><span class="nf">echo</span><span class="w"> </span><span class="s2">"b / a : </span><span class="nv">$val</span><span class="s2">"</span><span class="w">
+ 
+</span><span class="nf">val</span><span class="o">=</span><span class="err">`</span><span class="nf">expr</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nv">$a</span><span class="err">`</span><span class="w">
+</span><span class="nf">echo</span><span class="w"> </span><span class="s2">"b % a : </span><span class="nv">$val</span><span class="s2">"</span><span class="w">
+ 
+</span><span class="kr">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="nf">then</span><span class="w">
+   </span><span class="nx">echo</span><span class="w"> </span><span class="s2">"a 等于 b"</span><span class="w">
+</span><span class="nf">fi</span><span class="w">
+</span><span class="nx">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="nf">then</span><span class="w">
+   </span><span class="nx">echo</span><span class="w"> </span><span class="s2">"a 不等于 b"</span><span class="w">
+</span><span class="nf">fi</span><span class="w">
+</span></code></pre></div></div>
+<p>执行脚本，输出结果如下所示：</p>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nx">30</span><span class="w">
+</span><span class="nf">a</span><span class="w"> </span><span class="nf">-</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nt">-10</span><span class="w">
+</span><span class="nf">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nx">200</span><span class="w">
+</span><span class="nf">b</span><span class="w"> </span><span class="nx">/</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nx">2</span><span class="w">
+</span><span class="nf">b</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nx">0</span><span class="w">
+</span><span class="nf">a</span><span class="w"> </span><span class="err">不等于</span><span class="w"> </span><span class="nx">b</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>注意：</strong>
+<em>乘号()前边必须加反斜杠()才能实现乘法运算；</em></p>
+
+<p><em>在 MAC 中 shell 的 expr 语法是：$((表达式))，此处表达式中的 “” 不需要转义符号 “\” 。</em></p>
+
+<h3 id="12-关系运算符">1.2. 关系运算符</h3>
+
+<p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字。
+下表列出了常用的关系运算符，假定变量 a 为 10，变量 b 为 20：
+说明:</p>
+<ul>
+  <li>-eq	检测两个数是否相等，相等返回 true。	[ $a -eq $b ] 返回 false。</li>
+  <li>-ne	检测两个数是否相等，不相等返回 true。	[ $a -ne $b ] 返回 true。</li>
+  <li>-gt	    检测左边的数是否大于右边的，如果是，则返回 true。	[ $a -gt $b ] 返回 false。</li>
+  <li>-lt	    检测左边的数是否小于右边的，如果是，则返回 true。	[ $a -lt $b ] 返回 true。</li>
+  <li>-ge	检测左边的数是否大于等于右边的，如果是，则返回 true。	[ $a -ge $b ] 返回 false。</li>
+  <li>-le	检测左边的数是否小于等于右边的，如果是，则返回 true。	[ $a -le $b ] 返回 true。</li>
+</ul>
+
+<p>实例</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span><span class="w">
+ 
+</span><span class="nf">a</span><span class="o">=</span><span class="mi">10</span><span class="w">
+</span><span class="nf">b</span><span class="o">=</span><span class="mi">20</span><span class="w">
+ 
+</span><span class="kr">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="o">-eq</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="nf">then</span><span class="w">
+   </span><span class="nx">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -eq </span><span class="nv">$b</span><span class="s2"> : a 等于 b"</span><span class="w">
+</span><span class="kr">else</span><span class="w">
+   </span><span class="nf">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -eq </span><span class="nv">$b</span><span class="s2">: a 不等于 b"</span><span class="w">
+</span><span class="nf">fi</span><span class="w">
+</span><span class="nx">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="o">-ne</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="nf">then</span><span class="w">
+   </span><span class="nx">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -ne </span><span class="nv">$b</span><span class="s2">: a 不等于 b"</span><span class="w">
+</span><span class="kr">else</span><span class="w">
+   </span><span class="nf">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -ne </span><span class="nv">$b</span><span class="s2"> : a 等于 b"</span><span class="w">
+</span><span class="nf">fi</span><span class="w">
+</span><span class="nx">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="o">-gt</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="nf">then</span><span class="w">
+   </span><span class="nx">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -gt </span><span class="nv">$b</span><span class="s2">: a 大于 b"</span><span class="w">
+</span><span class="kr">else</span><span class="w">
+   </span><span class="nf">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -gt </span><span class="nv">$b</span><span class="s2">: a 不大于 b"</span><span class="w">
+</span><span class="nf">fi</span><span class="w">
+</span><span class="nx">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="o">-lt</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="nf">then</span><span class="w">
+   </span><span class="nx">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -lt </span><span class="nv">$b</span><span class="s2">: a 小于 b"</span><span class="w">
+</span><span class="kr">else</span><span class="w">
+   </span><span class="nf">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -lt </span><span class="nv">$b</span><span class="s2">: a 不小于 b"</span><span class="w">
+</span><span class="nf">fi</span><span class="w">
+</span><span class="nx">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="o">-ge</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="nf">then</span><span class="w">
+   </span><span class="nx">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -ge </span><span class="nv">$b</span><span class="s2">: a 大于或等于 b"</span><span class="w">
+</span><span class="kr">else</span><span class="w">
+   </span><span class="nf">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -ge </span><span class="nv">$b</span><span class="s2">: a 小于 b"</span><span class="w">
+</span><span class="nf">fi</span><span class="w">
+</span><span class="nx">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="o">-le</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="nf">then</span><span class="w">
+   </span><span class="nx">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -le </span><span class="nv">$b</span><span class="s2">: a 小于或等于 b"</span><span class="w">
+</span><span class="kr">else</span><span class="w">
+   </span><span class="nf">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -le </span><span class="nv">$b</span><span class="s2">: a 大于 b"</span><span class="w">
+</span><span class="nf">fi</span><span class="w">
+
+</span></code></pre></div></div>
+<p>执行脚本，输出结果如下所示：</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">10</span><span class="w"> </span><span class="o">-eq</span><span class="w"> </span><span class="mi">20</span><span class="p">:</span><span class="w"> </span><span class="nf">a</span><span class="w"> </span><span class="err">不等于</span><span class="w"> </span><span class="nx">b</span><span class="w">
+</span><span class="mi">10</span><span class="w"> </span><span class="o">-ne</span><span class="w"> </span><span class="mi">20</span><span class="p">:</span><span class="w"> </span><span class="nf">a</span><span class="w"> </span><span class="err">不等于</span><span class="w"> </span><span class="nx">b</span><span class="w">
+</span><span class="mi">10</span><span class="w"> </span><span class="o">-gt</span><span class="w"> </span><span class="mi">20</span><span class="p">:</span><span class="w"> </span><span class="nf">a</span><span class="w"> </span><span class="err">不大于</span><span class="w"> </span><span class="nx">b</span><span class="w">
+</span><span class="mi">10</span><span class="w"> </span><span class="o">-lt</span><span class="w"> </span><span class="mi">20</span><span class="p">:</span><span class="w"> </span><span class="nf">a</span><span class="w"> </span><span class="err">小于</span><span class="w"> </span><span class="nx">b</span><span class="w">
+</span><span class="mi">10</span><span class="w"> </span><span class="o">-ge</span><span class="w"> </span><span class="mi">20</span><span class="p">:</span><span class="w"> </span><span class="nf">a</span><span class="w"> </span><span class="err">小于</span><span class="w"> </span><span class="nx">b</span><span class="w">
+</span><span class="mi">10</span><span class="w"> </span><span class="o">-le</span><span class="w"> </span><span class="mi">20</span><span class="p">:</span><span class="w"> </span><span class="nf">a</span><span class="w"> </span><span class="err">小于或等于</span><span class="w"> </span><span class="nx">b</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="13-布尔运算符">1.3. 布尔运算符</h3>
+
+<p>下表列出了常用的布尔运算符，假定变量 a 为 10，变量 b 为 20：</p>
+
+<p>说明</p>
+
+<ul>
+  <li>!	非运算，表达式为 true 则返回 false，否则返回 true。	[ ! false ] 返回 true。</li>
+  <li>-o	或运算，有一个表达式为 true 则返回 true。	[ $a -lt 20 -o $b -gt 100 ] 返回 true。</li>
+  <li>-a	与运算，两个表达式都为 true 才返回 true。	[ $a -lt 20 -a $b -gt 100 ] 返回 false。</li>
+</ul>
+
+<p>实例</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span><span class="w">
+ 
+</span><span class="nf">a</span><span class="o">=</span><span class="mi">10</span><span class="w">
+</span><span class="nf">b</span><span class="o">=</span><span class="mi">20</span><span class="w">
+ 
+</span><span class="kr">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="nf">then</span><span class="w">
+   </span><span class="nx">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> != </span><span class="nv">$b</span><span class="s2"> : a 不等于 b"</span><span class="w">
+</span><span class="kr">else</span><span class="w">
+   </span><span class="nf">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> != </span><span class="nv">$b</span><span class="s2">: a 等于 b"</span><span class="w">
+</span><span class="nf">fi</span><span class="w">
+</span><span class="nx">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="o">-lt</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="nt">-a</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="o">-gt</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="nf">then</span><span class="w">
+   </span><span class="nx">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -lt 100 -a </span><span class="nv">$b</span><span class="s2"> -gt 15 : 返回 true"</span><span class="w">
+</span><span class="kr">else</span><span class="w">
+   </span><span class="nf">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -lt 100 -a </span><span class="nv">$b</span><span class="s2"> -gt 15 : 返回 false"</span><span class="w">
+</span><span class="nf">fi</span><span class="w">
+</span><span class="nx">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="o">-lt</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="nt">-o</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="o">-gt</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="nf">then</span><span class="w">
+   </span><span class="nx">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -lt 100 -o </span><span class="nv">$b</span><span class="s2"> -gt 100 : 返回 true"</span><span class="w">
+</span><span class="kr">else</span><span class="w">
+   </span><span class="nf">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -lt 100 -o </span><span class="nv">$b</span><span class="s2"> -gt 100 : 返回 false"</span><span class="w">
+</span><span class="nf">fi</span><span class="w">
+</span><span class="nx">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="o">-lt</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="nt">-o</span><span class="w"> </span><span class="nv">$b</span><span class="w"> </span><span class="o">-gt</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="nf">then</span><span class="w">
+   </span><span class="nx">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -lt 100 -o </span><span class="nv">$b</span><span class="s2"> -gt 100 : 返回 true"</span><span class="w">
+</span><span class="kr">else</span><span class="w">
+   </span><span class="nf">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2"> -lt 100 -o </span><span class="nv">$b</span><span class="s2"> -gt 100 : 返回 false"</span><span class="w">
+</span><span class="nf">fi</span><span class="w">
+</span></code></pre></div></div>
+
+<p>执行脚本，输出结果如下所示：</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+</span><span class="mi">10</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nf">a</span><span class="w"> </span><span class="err">不等于</span><span class="w"> </span><span class="nx">b</span><span class="w">
+</span><span class="mi">10</span><span class="w"> </span><span class="o">-lt</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="nt">-a</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">-gt</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">返回</span><span class="w"> </span><span class="nf">true</span><span class="w">
+</span><span class="nx">10</span><span class="w"> </span><span class="o">-lt</span><span class="w"> </span><span class="nx">100</span><span class="w"> </span><span class="nt">-o</span><span class="w"> </span><span class="nx">20</span><span class="w"> </span><span class="o">-gt</span><span class="w"> </span><span class="nx">100</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">返回</span><span class="w"> </span><span class="nx">true</span><span class="w">
+</span><span class="mi">10</span><span class="w"> </span><span class="o">-lt</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="nt">-o</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">-gt</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">返回</span><span class="w"> </span><span class="nf">false</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="14-逻辑运算符">1.4. 逻辑运算符</h3>
+
+<p>以下介绍 Shell 的逻辑运算符，假定变量 a 为 10，变量 b 为 20:</p>
+
+<p>说明:</p>
+
+<ul>
+  <li>&amp;&amp;	逻辑的 AND	[[ $a -lt 100 &amp;&amp; $b -gt 100 ]] 返回 false</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td> </td>
+          <td>逻辑的 OR	[[ $a -lt 100</td>
+          <td> </td>
+          <td>$b -gt 100 ]] 返回 true</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p>实例</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
+a=10
+b=20
+ 
+if [[ $a -lt 100 &amp;&amp; $b -gt 100 ]]
+then
+   echo "返回 true"
+else
+   echo "返回 false"
+fi
+ 
+if [[ $a -lt 100 || $b -gt 100 ]]
+then
+   echo "返回 true"
+else
+   echo "返回 false"
+fi
+</code></pre></div></div>
+
+<p>执行脚本，输出结果如下所示：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+返回 false
+返回 true
+</code></pre></div></div>
+
+<h3 id="15-字符串运算符">1.5. 字符串运算符</h3>
+
+<p>下表列出了常用的字符串运算符，假定变量 a 为 “abc”，变量 b 为 “efg”：</p>
+
+<p>说明:</p>
+
+<ul>
+  <li>=	检测两个字符串是否相等，相等返回 true。	[ $a = $b ] 返回 false。</li>
+  <li>!=	检测两个字符串是否相等，不相等返回 true。	[ $a != $b ] 返回 true。</li>
+  <li>-z	检测字符串长度是否为0，为0返回 true。	[ -z $a ] 返回 false。</li>
+  <li>-n	检测字符串长度是否为0，不为0返回 true。	[ -n $a ] 返回 true。</li>
+  <li>str	检测字符串是否为空，不为空返回 true。	[ $a ] 返回 true。</li>
+</ul>
+
+<p>实例</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
+ 
+a="abc"
+b="efg"
+ 
+if [ $a = $b ]
+then
+   echo "$a = $b : a 等于 b"
+else
+   echo "$a = $b: a 不等于 b"
+fi
+if [ $a != $b ]
+then
+   echo "$a != $b : a 不等于 b"
+else
+   echo "$a != $b: a 等于 b"
+fi
+if [ -z $a ]
+then
+   echo "-z $a : 字符串长度为 0"
+else
+   echo "-z $a : 字符串长度不为 0"
+fi
+if [ -n $a ]
+then
+   echo "-n $a : 字符串长度不为 0"
+else
+   echo "-n $a : 字符串长度为 0"
+fi
+if [ $a ]
+then
+   echo "$a : 字符串不为空"
+else
+   echo "$a : 字符串为空"
+fi
+</code></pre></div></div>
+
+<p>执行脚本，输出结果如下所示：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>abc = efg: a 不等于 b
+abc != efg : a 不等于 b
+-z abc : 字符串长度不为 0
+-n abc : 字符串长度不为 0
+abc : 字符串不为空
+</code></pre></div></div>
+
+<h3 id="16-文件测试运算符">1.6. 文件测试运算符</h3>
+
+<p>文件测试运算符用于检测 Unix 文件的各种属性。</p>
+
+<p>属性检测描述如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-b file	检测文件是否是块设备文件，如果是，则返回 true。	[ -b $file ] 返回 false。
+-c file	检测文件是否是字符设备文件，如果是，则返回 true。	[ -c $file ] 返回 false。
+-d file	检测文件是否是目录，如果是，则返回 true。	[ -d $file ] 返回 false。
+-f file	检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。	[ -f $file ] 返回 true。
+-g file	检测文件是否设置了 SGID 位，如果是，则返回 true。	[ -g $file ] 返回 false。
+-k file	检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。	[ -k $file ] 返回 false。
+-p file	检测文件是否是有名管道，如果是，则返回 true。	[ -p $file ] 返回 false。
+-u file	检测文件是否设置了 SUID 位，如果是，则返回 true。	[ -u $file ] 返回 false。
+-r file	检测文件是否可读，如果是，则返回 true。	[ -r $file ] 返回 true。
+-w file	检测文件是否可写，如果是，则返回 true。	[ -w $file ] 返回 true。
+-x file	检测文件是否可执行，如果是，则返回 true。	[ -x $file ] 返回 true。
+-s file	检测文件是否为空（文件大小是否大于0），不为空返回 true。	[ -s $file ] 返回 true。
+-e file	检测文件（包括目录）是否存在，如果是，则返回 true。	[ -e $file ] 返回 true。
+</code></pre></div></div>
+
+<p>实例
+变量 file 表示文件”/var/test.sh”，它的大小为100字节，具有 rwx 权限。下面的代码，将检测该文件的各种属性：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#!/bin/bash
+file="/var/test.sh"
+if [ -r $file ]
+then
+   echo "文件可读"
+else
+   echo "文件不可读"
+fi
+if [ -w $file ]
+then
+   echo "文件可写"
+else
+   echo "文件不可写"
+fi
+if [ -x $file ]
+then
+   echo "文件可执行"
+else
+   echo "文件不可执行"
+fi
+if [ -f $file ]
+then
+   echo "文件为普通文件"
+else
+   echo "文件为特殊文件"
+fi
+if [ -d $file ]
+then
+   echo "文件是个目录"
+else
+   echo "文件不是个目录"
+fi
+if [ -s $file ]
+then
+   echo "文件不为空"
+else
+   echo "文件为空"
+fi
+if [ -e $file ]
+then
+   echo "文件存在"
+else
+   echo "文件不存在"
+fi
+</code></pre></div></div>
+
+<p>执行脚本，输出结果如下所示：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>文件可读
+文件可写
+文件可执行
+文件为普通文件
+文件不是个目录
+文件不为空
+文件存在
+</code></pre></div></div>
+:ET
