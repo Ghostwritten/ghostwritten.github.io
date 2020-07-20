@@ -2,7 +2,7 @@
 title: docker registry仓库搭建
 layout: post
 date: '2020-07-16 15:30:00'
-tags: []
+tags: [docker]
 toc: true
 author: 幽灵代笔
 ---
