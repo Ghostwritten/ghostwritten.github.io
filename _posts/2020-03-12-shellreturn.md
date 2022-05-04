@@ -1,9 +1,17 @@
 ---
+layout: post
+read_time: true
+show_date: true
 title: shell返回值判断
-layout: default
 date: '2020-03-12 15:40:00'
-categories:
-- shell
+description: 
+img: posts/girl/1_Portrait382-1280x640.jpg
+tags: [shell]
+author: 幽灵代笔
+toc: true
+comments: true
+mathjax: yes
+
 ---
 
 ## 1.判断命令是否存在

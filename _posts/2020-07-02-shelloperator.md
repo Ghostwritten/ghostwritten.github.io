@@ -1,12 +1,17 @@
 ---
-title: shell运算符
 layout: post
+read_time: true
+show_date: true
+title: shell 运算符
 date: '2020-03-12 23:51:00'
-tags:
-- shell
+description: 
+img: posts/girl/1_Portrait382-1280x640.jpg
+tags: [shell]
 author: 幽灵代笔
-comments: true
 toc: true
+comments: true
+mathjax: yes
+
 ---
 
 ## 1. Shell 基本运算符

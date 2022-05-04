@@ -1,11 +1,17 @@
 ---
-title: "/etc/init.d/functions配置system服务"
 layout: post
+read_time: true
+show_date: true
+title: "/etc/init.d/functions 配置 system 服务"
 date: '2020-06-09 11:00:00'
-autor: 幽灵代笔
-tags:
-- shell
+description: 
+img: posts/girl/1_Portrait382-1280x640.jpg
+tags: [shell]
+author: 幽灵代笔
 toc: true
+comments: true
+mathjax: yes
+
 ---
 
 ## 1. 函数
