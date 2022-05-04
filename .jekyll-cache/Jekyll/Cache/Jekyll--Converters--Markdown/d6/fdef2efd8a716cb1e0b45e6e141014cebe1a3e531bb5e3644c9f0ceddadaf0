@@ -1,0 +1,115 @@
+I"F<h2 id="1判断命令是否存在">1.判断命令是否存在</h2>
+<h3 id="11-优雅方法1">1.1 优雅方法1</h3>
+<p>首先，检查命令是否有效的惯用方法直接在if语句中。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if command; then
+    echo notify user OK &gt;&amp;2
+else
+    echo notify user FAIL &gt;&amp;2
+    return -1
+fi
+</code></pre></div></div>
+<p>（良好做法：使用&gt;&amp;2将消息发送给stderr。）</p>
+<h3 id="12-优雅方法2">1.2 优雅方法2</h3>
+<p>将通用逻辑转移到共享函数中。</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>check() {
+    local command=("$@")
+
+    if "${command[@]}"; then
+        echo notify user OK &gt;&amp;2
+    else
+        echo notify user FAIL &gt;&amp;2
+        exit 1
+    fi
+}
+
+check command1
+check command2
+check command3
+</code></pre></div></div>
+<h3 id="13-优雅方法3">1.3 优雅方法3</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>installed () {
+        command -v "$1" &gt;/dev/null 2&gt;&amp;1
+}
+if installed &lt;command1&gt;
+then
+       &lt;command1&gt;  xx
+else
+        &lt;command1&gt;  xxx
+ fi
+</code></pre></div></div>
+<h2 id="2返回错误退出">2.返回错误退出</h2>
+<h3 id="21--exit退出">2.1 || exit退出</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>command1 || exit
+command2 || exit
+command3 || exit
+</code></pre></div></div>
+<h3 id="22-使用-e">2.2 使用-e</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$  bash -e xx.sh
+#!/bin/bash -e xx.sh
+command1
+command2
+command3
+</code></pre></div></div>
+
+<h3 id="2-3-set--e">2. 3 set -e</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ bash xx.sh 
+#!/bin/bash
+set -e 
+command1
+command2
+command3
+</code></pre></div></div>
+<h2 id="3-返回错误提示">3. 返回错误提示</h2>
+<h3 id="31-一般方法">3.1 一般方法：</h3>
+<p>方法1</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if do some command; then
+    echo notify user OK
+else
+    echo notify user fail
+    exit 255  # exit code must be unsigned short
+fi
+</code></pre></div></div>
+<p>方法2</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>do some command
+if [ $? -eq 0 ]; then
+    echo notify user OK
+else
+    echo notify user FAIL
+    return -1
+fi
+</code></pre></div></div>
+<h3 id="32-优雅方法">3.2 优雅方法</h3>
+<p>方法1</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>die() {
+    local message=$1
+
+    echo "$message" &gt;&amp;2
+    exit 1
+}
+
+command1 || die 'command1 failed'
+command2 || die 'command2 failed'
+command3 || die 'command3 failed'
+</code></pre></div></div>
+<p>方法2（<strong>推荐</strong>）</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>warn () {
+  echo "$@" &gt;&amp;2
+}
+
+die () {
+  status="$1"
+  shift
+  warn "$@"
+  exit "$status"
+}
+
+do some command &amp;&amp; echo notify user OK || die 255 Notify user fail
+</code></pre></div></div>
+:ET

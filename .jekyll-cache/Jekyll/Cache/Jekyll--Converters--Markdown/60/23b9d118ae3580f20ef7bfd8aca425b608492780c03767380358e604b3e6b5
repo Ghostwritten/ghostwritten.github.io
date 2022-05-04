@@ -1,0 +1,709 @@
+I"�c<h2 id="1介绍">1.介绍</h2>
+<p>在 Python 中有一个标准的 logging 模块，我们可以使用它来进行标注的日志记录，利用它我们可以更方便地进行日志记录，同时还可以做更方便的级别区分以及一些额外日志信息的记录，如时间、运行模块信息等。</p>
+
+<p><img src="https://img-blog.csdnimg.cn/20200517115746736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpeGloYWhhbGVsZWhlaGU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p>
+
+<p>整个日志记录的框架可以分为这么几个部分：</p>
+
+<ul>
+  <li>Logger 记录器，暴露了应用程序代码能直接使用的接口。</li>
+  <li>Handler 处理器，将（记录器产生的）日志记录发送至合适的目的地。</li>
+  <li>Filter 过滤器，提供了更好的粒度控制，它可以决定输出哪些日志记录。</li>
+  <li>Formatter 格式化器，指明了最终输出中日志记录的布局。</li>
+</ul>
+
+<h4 id="11-logger-记录器">1.1 Logger 记录器</h4>
+<p>Logger是一个树形层级结构，在使用接口<code class="language-plaintext highlighter-rouge">debug，info，warn，error，critical</code>之前必须创建Logger实例，即创建一个记录器，如果没有显式的进行创建，则默认创建一个root logger，并应用默认的日志级别(WARN)，处理器Handler(StreamHandler，即将日志信息打印输出在标准输出上)，和格式化器Formatter(默认的格式即为第一个简单使用程序中输出的格式)。</p>
+
+<p>创建方法:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">logger_name</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>创建Logger实例后，可以使用以下方法进行日志级别设置，增加处理器Handler。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logger</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">ERROR</span><span class="p">)</span>    <span class="c1">#设置日志级别为ERROR，即只有日志级别大于等于ERROR的日志才会输出
+</span><span class="n">logger</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler_name</span><span class="p">)</span> <span class="c1"># 为Logger实例增加一个处理器
+</span><span class="n">logger</span><span class="p">.</span><span class="n">removeHandler</span><span class="p">(</span><span class="n">handler_name</span><span class="p">)</span> <span class="c1"># 为Logger实例删除一个处理器
+</span></code></pre></div></div>
+<h4 id="12-handler-处理器">1.2 Handler 处理器</h4>
+<p>Handler处理器类型有很多种，比较常用的有三个，<code class="language-plaintext highlighter-rouge">StreamHandler</code>，<code class="language-plaintext highlighter-rouge">FileHandler</code>，<code class="language-plaintext highlighter-rouge">NullHandler</code>。
+创建StreamHandler之后，可以通过使用以下方法设置日志级别，设置格式化器Formatter，增加或删除过滤器Filter。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ch</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">WARN</span><span class="p">)</span>     <span class="c1">#指定日志级别，低于WARN级别的日志将被忽略
+</span><span class="n">ch</span><span class="p">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter_name</span><span class="p">)</span>   <span class="c1">#设置一个格式化器formatter
+</span><span class="n">ch</span><span class="p">.</span><span class="n">addFilter</span><span class="p">(</span><span class="n">filter_name</span><span class="p">)</span>    <span class="c1">#增加一个过滤器，可以增加多个
+</span><span class="n">ch</span><span class="p">.</span><span class="n">removeFilter</span><span class="p">(</span><span class="n">filter_name</span><span class="p">)</span>   <span class="c1">#删除一个过滤器
+</span></code></pre></div></div>
+
+<p>StreamHandler
+创建方法:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sh</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">stream</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>FileHandler
+创建方法:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fh</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'a'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>NullHandler
+NullHandler类位于核心logging包，不做任何的格式化或者输出。
+本质上它是个“什么都不做”的handler，由库开发者使用。
+logging 模块提供的 全部Handler 有：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>StreamHandler：logging.StreamHandler；  日志输出到流，可以是 sys.stderr，sys.stdout 或者文件。
+FileHandler：logging.FileHandler；    日志输出到文件。
+BaseRotatingHandler：logging.handlers.BaseRotatingHandler； 基本的日志回滚方式。
+RotatingHandler：logging.handlers.RotatingHandler；日志回滚方式，支持日志文件最大数量和日志文件回滚。
+TimeRotatingHandler：logging.handlers.TimeRotatingHandler；日志回滚方式，在一定时间区域内回滚日志文件。
+SocketHandler：logging.handlers.SocketHandler；远程输出日志到TCP/IP sockets。
+DatagramHandler：logging.handlers.DatagramHandler；远程输出日志到UDP sockets。
+SMTPHandler：logging.handlers.SMTPHandler；远程输出日志到邮件地址。
+SysLogHandler：logging.handlers.SysLogHandler；日志输出到syslog。
+NTEventLogHandler：logging.handlers.NTEventLogHandler；远程输出日志到Windows NT/2000/XP的事件日志。
+MemoryHandler：logging.handlers.MemoryHandler；日志输出到内存中的指定buffer。
+HTTPHandler：logging.handlers.HTTPHandler；通过”GET”或者”POST”远程输出到HTTP服务器。
+</code></pre></div></div>
+
+<h4 id="13-formatter-格式化器">1.3 Formatter 格式化器</h4>
+<p>使用Formatter对象设置日志信息最后的规则、结构和内容，默认的时间格式为<code class="language-plaintext highlighter-rouge">%Y-%m-%d %H:%M:%S</code>。</p>
+
+<p>创建方法:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">Formatter</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">datefmt</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>其中，fmt是消息的格式化字符串，datefmt是日期字符串。如果不指明fmt，将使用’%(message)s’。如果不指明datefmt，将使用ISO8601日期格式。</p>
+
+<h4 id="14-filter-过滤器">1.4 Filter 过滤器</h4>
+<p>Handlers和Loggers可以使用Filters来完成比级别更复杂的过滤。Filter基类只允许特定Logger层次以下的事件。例如用‘A.B’初始化的Filter允许Logger ‘A.B’, ‘A.B.C’, ‘A.B.C.D’, ‘A.B.D’等记录的事件，logger‘A.BB’, ‘B.A.B’ 等就不行。 如果用空字符串来初始化，所有的事件都接受。</p>
+
+<p>创建方法:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">filter</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">Filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">''</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>熟悉了这些概念之后，有另外一个比较重要的事情必须清楚，即Logger是一个树形层级结构;
+Logger可以包含一个或多个Handler和Filter，即Logger与Handler或Fitler是一对多的关系;
+一个Logger实例可以新增多个Handler，一个Handler可以新增多个格式化器或多个过滤器，而且日志级别将会继承。</p>
+
+<p><img src="https://img-blog.csdnimg.cn/20200517123231979.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpeGloYWhhbGVsZWhlaGU=,size_16,color_FFFFFF,t_70" alt="" /></p>
+
+<h2 id="2-优点">2. 优点</h2>
+<p>总的来说 logging 模块相比 print 有这么几个优点：</p>
+
+<ul>
+  <li>可以在 logging 模块中设置日志等级，在不同的版本（如开发环境、生产环境）上通过设置不同的输出等级来记录对应的日志，非常灵活。</li>
+  <li>print 的输出信息都会输出到标准输出流中，而 logging 模块就更加灵活，可以设置输出到任意位置，如写入文件、写入远程服务器等。</li>
+  <li>logging 模块具有灵活的配置和格式化功能，如配置输出当前模块信息、运行时间等，相比 print 的字符串格式化更加方便易用。</li>
+</ul>
+
+<h2 id="3-用法">3. 用法</h2>
+<h3 id="31-默认输出">3.1 默认输出</h3>
+<p>高于WARNING的日志信息才会输出</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">cat</span> <span class="n">log1</span><span class="p">.</span><span class="n">py</span> 
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">()</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'This is a debug message'</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'This is an info message'</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="s">'This is a warning message'</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">'This is an error message'</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">critical</span><span class="p">(</span><span class="s">'This is a critical message'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>输出：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python log1.py 
+WARNING:root:This is a warning message
+ERROR:root:This is an error message
+CRITICAL:root:This is a critical message
+</code></pre></div></div>
+<h3 id="32-日志配置格式输出">3.2 日志配置格式输出</h3>
+<p>配置方式</p>
+
+<ul>
+  <li>显式创建记录器Logger、处理器Handler和格式化器Formatter，并进行相关设置；</li>
+  <li>通过简单方式进行配置，使用basicConfig()函数直接进行配置；</li>
+  <li>通过配置文件进行配置，使用fileConfig()函数读取配置文件；</li>
+  <li>通过配置字典进行配置，使用dictConfig()函数读取配置信息；</li>
+  <li>通过网络进行配置，使用listen()函数进行网络配置。</li>
+</ul>
+
+<p>basicConfig关键字参数</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>关键字	描述
+filename	创建一个FileHandler，使用指定的文件名，而不是使用StreamHandler。
+filemode	如果指明了文件名，指明打开文件的模式（如果没有指明filemode，默认为<span class="s1">'a'</span>）。
+format	handler使用指明的格式化字符串。
+datefmt	使用指明的日期／时间格式。
+level	指明根logger的级别。
+stream	使用指明的流来初始化StreamHandler。该参数与<span class="s1">'filename'</span>不兼容，如果两个都有，<span class="s1">'stream'</span>被忽略。
+</code></pre></div></div>
+<p>format格式</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>格式	描述
+%<span class="o">(</span>levelno<span class="o">)</span>s	打印日志级别的数值
+%<span class="o">(</span>levelname<span class="o">)</span>s	打印日志级别名称
+%<span class="o">(</span>pathname<span class="o">)</span>s	打印当前执行程序的路径
+%<span class="o">(</span>filename<span class="o">)</span>s	打印当前执行程序名称
+%<span class="o">(</span>funcName<span class="o">)</span>s	打印日志的当前函数
+%<span class="o">(</span>lineno<span class="o">)</span>d	打印日志的当前行号
+%<span class="o">(</span>asctime<span class="o">)</span>s	打印日志的时间
+%<span class="o">(</span>thread<span class="o">)</span>d	打印线程id
+%<span class="o">(</span>threadName<span class="o">)</span>s	打印线程名称
+%<span class="o">(</span>process<span class="o">)</span>d	打印进程ID
+%<span class="o">(</span>message<span class="o">)</span>s	打印日志信息
+</code></pre></div></div>
+
+<h4 id="321-配置输出级别并指定到文件">3.2.1 配置输出级别并指定到文件</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">cat</span> <span class="n">log2</span><span class="p">.</span><span class="n">py</span> 
+<span class="c1">#!/usr/local/bin/python
+# -*- coding:utf-8 -*-
+</span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="c1"># 通过下面的方式进行简单配置输出方式与日志级别
+</span><span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">'logger.log'</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+
+<span class="n">logging</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'debug message'</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'info message'</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">warn</span><span class="p">(</span><span class="s">'warn message'</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">'error message'</span><span class="p">)</span>
+<span class="n">logging</span><span class="p">.</span><span class="n">critical</span><span class="p">(</span><span class="s">'critical message'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>输出：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python log2.py
+<span class="nv">$ </span><span class="nb">cat </span>logger.log
+INFO:root:info message  <span class="c">#info级别也能输出</span>
+WARNING:root:warn message
+ERROR:root:error message
+CRITICAL:root:critical message
+</code></pre></div></div>
+<h4 id="322-声明了一个-logger-对象它就是日志输出的主类">3.2.2 声明了一个 Logger 对象，它就是日志输出的主类</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">cat</span> <span class="n">log3</span><span class="p">.</span><span class="n">py</span> 
+<span class="c1">#!/usr/local/bin/python
+# -*- coding:utf-8 -*-
+</span><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="c1"># 通过下面的方式进行简单配置输出方式与日志级别
+</span><span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">'logger.log'</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'debug message'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'info message'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">warn</span><span class="p">(</span><span class="s">'warn message'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">'error message'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">critical</span><span class="p">(</span><span class="s">'critical message'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>输出：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python log3.py
+<span class="nv">$ </span><span class="nb">cat </span>logger.log 
+INFO:__main__:info message
+WARNING:__main__:warn message
+ERROR:__main__:error message
+CRITICAL:__main__:critical message
+</code></pre></div></div>
+<h4 id="323-格式化输出">3.2.3 格式化输出</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">cat</span> <span class="n">log4</span><span class="p">.</span><span class="n">py</span> 
+<span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">"logger.log"</span><span class="p">,</span> <span class="n">filemode</span><span class="o">=</span><span class="s">"w"</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s">"%(asctime)s %(name)s:%(levelname)s:%(message)s"</span><span class="p">,</span> <span class="n">datefmt</span><span class="o">=</span><span class="s">"%d-%M-%Y %H:%M:%S"</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'debug message'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'info message'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">warn</span><span class="p">(</span><span class="s">'warn message'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">'error message'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">critical</span><span class="p">(</span><span class="s">'critical message'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>输出：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">python</span> <span class="n">log4</span><span class="p">.</span><span class="n">py</span>
+<span class="err">$</span> <span class="n">cat</span> <span class="n">logger</span><span class="p">.</span><span class="n">log</span> 
+<span class="mi">17</span><span class="o">-</span><span class="mi">49</span><span class="o">-</span><span class="mi">2020</span> <span class="mi">13</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">16</span> <span class="n">__main__</span><span class="p">:</span><span class="n">DEBUG</span><span class="p">:</span><span class="n">debug</span> <span class="n">message</span>
+<span class="mi">17</span><span class="o">-</span><span class="mi">49</span><span class="o">-</span><span class="mi">2020</span> <span class="mi">13</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">16</span> <span class="n">__main__</span><span class="p">:</span><span class="n">INFO</span><span class="p">:</span><span class="n">info</span> <span class="n">message</span>
+<span class="mi">17</span><span class="o">-</span><span class="mi">49</span><span class="o">-</span><span class="mi">2020</span> <span class="mi">13</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">16</span> <span class="n">__main__</span><span class="p">:</span><span class="n">WARNING</span><span class="p">:</span><span class="n">warn</span> <span class="n">message</span>
+<span class="mi">17</span><span class="o">-</span><span class="mi">49</span><span class="o">-</span><span class="mi">2020</span> <span class="mi">13</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">16</span> <span class="n">__main__</span><span class="p">:</span><span class="n">ERROR</span><span class="p">:</span><span class="n">error</span> <span class="n">message</span>
+<span class="mi">17</span><span class="o">-</span><span class="mi">49</span><span class="o">-</span><span class="mi">2020</span> <span class="mi">13</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">16</span> <span class="n">__main__</span><span class="p">:</span><span class="n">CRITICAL</span><span class="p">:</span><span class="n">critical</span> <span class="n">message</span>
+</code></pre></div></div>
+
+<h3 id="33-handler配置">3.3 Handler配置</h3>
+<h4 id="331-handler配置格式输出">3.3.1 handler配置格式输出</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">cat</span> <span class="n">log5</span><span class="p">.</span><span class="n">py</span> 
+<span class="kn">import</span> <span class="nn">logging</span>
+ 
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s">'output.log'</span><span class="p">)</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s">'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span><span class="p">)</span>
+<span class="n">handler</span><span class="p">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+ 
+<span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'This is a log info'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'Debugging'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="s">'Warning exists'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'Finish'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>没有再使用 basicConfig 全局配置，而是先声明了一个 Logger 对象，然后指定了其对应的 Handler 为 FileHandler 对象，然后 Handler 对象还单独指定了 Formatter 对象单独配置输出格式，最后给 Logger 对象添加对应的 Handler 即可，最后可以发现日志就会被输出到 output.log 中.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">python</span> <span class="n">log5</span><span class="p">.</span><span class="n">py</span> 
+<span class="err">$</span> <span class="n">cat</span> <span class="n">output</span><span class="p">.</span><span class="n">log</span> 
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">13</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mi">41</span><span class="p">,</span><span class="mi">039</span> <span class="o">-</span> <span class="n">__main__</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">log</span> <span class="n">info</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">13</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mi">41</span><span class="p">,</span><span class="mi">039</span> <span class="o">-</span> <span class="n">__main__</span> <span class="o">-</span> <span class="n">WARNING</span> <span class="o">-</span> <span class="nb">Warning</span> <span class="n">exists</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">13</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mi">41</span><span class="p">,</span><span class="mi">039</span> <span class="o">-</span> <span class="n">__main__</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Finish</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="mi">909</span> <span class="o">-</span> <span class="n">__main__</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">log</span> <span class="n">info</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="mi">909</span> <span class="o">-</span> <span class="n">__main__</span> <span class="o">-</span> <span class="n">WARNING</span> <span class="o">-</span> <span class="nb">Warning</span> <span class="n">exists</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="mi">909</span> <span class="o">-</span> <span class="n">__main__</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Finish</span>
+</code></pre></div></div>
+<h4 id="332-多种handle输出">3.3.2 多种handle输出</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">cat</span> <span class="n">log6</span><span class="p">.</span><span class="n">py</span> 
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">logging.handlers</span> <span class="kn">import</span> <span class="n">HTTPHandler</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+ 
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+ 
+<span class="c1"># StreamHandler
+</span><span class="n">stream_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="n">stream_handler</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">stream_handler</span><span class="p">)</span>
+ 
+<span class="c1"># FileHandler
+</span><span class="n">file_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s">'output.log'</span><span class="p">)</span>
+<span class="n">file_handler</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s">'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span><span class="p">)</span>
+<span class="n">file_handler</span><span class="p">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">file_handler</span><span class="p">)</span>
+ 
+<span class="c1"># HTTPHandler
+</span><span class="n">http_handler</span> <span class="o">=</span> <span class="n">HTTPHandler</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">'localhost:80'</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="s">'log'</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">'POST'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">http_handler</span><span class="p">)</span>
+ 
+<span class="c1"># Log
+</span><span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'This is a log info'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'Debugging'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="s">'Warning exists'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'Finish'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>输出：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">python</span> <span class="n">log6</span><span class="p">.</span><span class="n">py</span>
+<span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">log</span> <span class="n">info</span>
+<span class="n">Debugging</span>
+<span class="nb">Warning</span> <span class="n">exists</span>
+<span class="n">Finish</span>
+<span class="err">$</span> <span class="n">cat</span> <span class="n">output</span><span class="p">.</span><span class="n">log</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mi">48</span><span class="p">,</span><span class="mi">809</span> <span class="o">-</span> <span class="n">__main__</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">log</span> <span class="n">info</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mi">48</span><span class="p">,</span><span class="mi">849</span> <span class="o">-</span> <span class="n">__main__</span> <span class="o">-</span> <span class="n">WARNING</span> <span class="o">-</span> <span class="nb">Warning</span> <span class="n">exists</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">05</span><span class="p">:</span><span class="mi">48</span><span class="p">,</span><span class="mi">851</span> <span class="o">-</span> <span class="n">__main__</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Finish</span>
+</code></pre></div></div>
+<h3 id="34-捕获-traceback">3.4 捕获 Traceback</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">cat</span> <span class="n">log7</span><span class="p">.</span><span class="n">py</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+ 
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+ 
+<span class="c1"># Formatter
+</span><span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s">'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span><span class="p">)</span>
+ 
+<span class="c1"># FileHandler
+</span><span class="n">file_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s">'result.log'</span><span class="p">)</span>
+<span class="n">file_handler</span><span class="p">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">file_handler</span><span class="p">)</span>
+ 
+<span class="c1"># StreamHandler
+</span><span class="n">stream_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+<span class="n">stream_handler</span><span class="p">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">stream_handler</span><span class="p">)</span>
+ 
+<span class="c1"># Log
+</span><span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'Start'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="s">'Something maybe fail.'</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="k">except</span> <span class="nb">Exception</span><span class="p">:</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">'Faild to get result'</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="c1">#logger.error('Faild to get result')
+</span><span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'Finished'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>在 error() 方法中添加了一个参数，将 exc_info 设置为了 True，这样我们就可以输出执行过程中的信息了，即完整的 Traceback 信息。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>python log7.py
+2020-05-17 14:13:02,217 - __main__ - INFO - Start
+2020-05-17 14:13:02,217 - __main__ - WARNING - Something maybe fail.
+2020-05-17 14:13:02,217 - __main__ - ERROR - Faild to get result
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">"log7.py"</span>, line 23, <span class="k">in</span> &lt;module&gt;
+    result <span class="o">=</span> 10 / 0
+ZeroDivisionError: integer division or modulo by zero
+2020-05-17 14:13:02,217 - __main__ - INFO - Finished
+</code></pre></div></div>
+<h3 id="35-配置共享">3.5 配置共享</h3>
+<p>在写项目的时候，我们肯定会将许多配置放置在许多模块下面，这时如果我们每个文件都来配置 logging 配置那就太繁琐了，logging 模块提供了父子模块共享配置的机制，会根据 Logger 的名称来自动加载父模块的配置。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">vim</span> <span class="n">main</span><span class="p">.</span><span class="n">py</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">core</span>
+ 
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">'main'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+ 
+<span class="c1"># Handler
+</span><span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s">'result.log'</span><span class="p">)</span>
+<span class="n">handler</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s">'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span><span class="p">)</span>
+<span class="n">handler</span><span class="p">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+ 
+<span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'Main Info'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'Main Debug'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">'Main Error'</span><span class="p">)</span>
+<span class="n">core</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div></div>
+<p>这里我们配置了日志的输出格式和文件路径，同时定义了 Logger 的名称为 main，然后引入了另外一个模块 core，最后调用了 core 的 run() 方法。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">vim</span> <span class="n">core</span><span class="p">.</span><span class="n">py</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+ 
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">'main.core'</span><span class="p">)</span>
+ 
+<span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'Core Info'</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'Core Debug'</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">'Core Error'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>这里我们定义了 Logger 的名称为 main.core，注意这里开头是 main，即刚才我们在 main.py 里面的 Logger 的名称，这样 core.py 里面的 Logger 就会复用 main.py 里面的 Logger 配置，而不用再去配置一次了.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">python</span> <span class="n">main</span><span class="p">.</span><span class="n">py</span>
+<span class="err">$</span> <span class="n">cat</span> <span class="n">result</span><span class="p">.</span><span class="n">log</span> 
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">48</span><span class="p">,</span><span class="mi">559</span> <span class="o">-</span> <span class="n">main</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Main</span> <span class="n">Info</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">48</span><span class="p">,</span><span class="mi">559</span> <span class="o">-</span> <span class="n">main</span> <span class="o">-</span> <span class="n">ERROR</span> <span class="o">-</span> <span class="n">Main</span> <span class="n">Error</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">48</span><span class="p">,</span><span class="mi">559</span> <span class="o">-</span> <span class="n">main</span><span class="p">.</span><span class="n">core</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Core</span> <span class="n">Info</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">48</span><span class="p">,</span><span class="mi">559</span> <span class="o">-</span> <span class="n">main</span><span class="p">.</span><span class="n">core</span> <span class="o">-</span> <span class="n">ERROR</span> <span class="o">-</span> <span class="n">Core</span> <span class="n">Error</span>
+</code></pre></div></div>
+
+<h3 id="36-文件配置">3.6 文件配置</h3>
+
+<p>常见的配置文件有 ini 格式、yaml 格式、JSON 格式，这里以yaml为例。将配置写入到配置文件，然后运行时读取配置文件里面的配置，这样是更方便管理和维护.</p>
+
+<h4 id="361-yaml配置文件">3.6.1 yaml配置文件</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">vim</span> <span class="n">config</span><span class="p">.</span><span class="n">yaml</span>
+<span class="n">version</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">formatters</span><span class="p">:</span>
+  <span class="n">brief</span><span class="p">:</span>
+    <span class="nb">format</span><span class="p">:</span> <span class="s">"%(asctime)s - %(message)s"</span>
+  <span class="n">simple</span><span class="p">:</span>
+    <span class="nb">format</span><span class="p">:</span> <span class="s">"%(asctime)s - %(name)s - %(levelname)s - %(message)s"</span>
+<span class="n">handlers</span><span class="p">:</span>
+  <span class="n">console</span><span class="p">:</span>
+    <span class="k">class</span> <span class="err">: </span><span class="nc">logging</span><span class="p">.</span><span class="n">StreamHandler</span>
+    <span class="n">formatter</span><span class="p">:</span> <span class="n">brief</span>
+    <span class="n">level</span>   <span class="p">:</span> <span class="n">INFO</span>
+    <span class="n">stream</span>  <span class="p">:</span> <span class="n">ext</span><span class="p">:</span><span class="o">//</span><span class="n">sys</span><span class="p">.</span><span class="n">stdout</span>
+  <span class="nb">file</span><span class="p">:</span>
+    <span class="k">class</span> <span class="err">: </span><span class="nc">logging</span><span class="p">.</span><span class="n">FileHandler</span>
+    <span class="n">formatter</span><span class="p">:</span> <span class="n">simple</span>
+    <span class="n">level</span><span class="p">:</span> <span class="n">DEBUG</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="n">debug</span><span class="p">.</span><span class="n">log</span>
+  <span class="n">error</span><span class="p">:</span>
+    <span class="n">class</span><span class="p">:</span> <span class="n">logging</span><span class="p">.</span><span class="n">handlers</span><span class="p">.</span><span class="n">RotatingFileHandler</span>
+    <span class="n">level</span><span class="p">:</span> <span class="n">ERROR</span>
+    <span class="n">formatter</span><span class="p">:</span> <span class="n">simple</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="n">error</span><span class="p">.</span><span class="n">log</span>
+    <span class="n">maxBytes</span><span class="p">:</span> <span class="mi">10485760</span>
+    <span class="n">backupCount</span><span class="p">:</span> <span class="mi">20</span>
+    <span class="n">encoding</span><span class="p">:</span> <span class="n">utf8</span>
+<span class="n">loggers</span><span class="p">:</span>
+  <span class="n">main</span><span class="p">.</span><span class="n">core</span><span class="p">:</span>
+    <span class="n">level</span><span class="p">:</span> <span class="n">DEBUG</span>
+    <span class="n">handlers</span><span class="p">:</span> <span class="p">[</span><span class="n">console</span><span class="p">,</span> <span class="nb">file</span><span class="p">,</span> <span class="n">error</span><span class="p">]</span>
+<span class="n">root</span><span class="p">:</span>
+  <span class="n">level</span><span class="p">:</span> <span class="n">DEBUG</span>
+  <span class="n">handlers</span><span class="p">:</span> <span class="p">[</span><span class="n">console</span><span class="p">]</span>
+</code></pre></div></div>
+<p>这里我们定义了 formatters、handlers、loggers、root 等模块，实际上对应的就是各个 Formatter、Handler、Logger 的配置，参数和它们的构造方法都是相同的。
+定义一个主入口文件，main.py.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">vim</span> <span class="n">main</span><span class="p">.</span><span class="n">py</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">core</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">logging.config</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">io</span> 
+ 
+<span class="k">def</span> <span class="nf">setup_logging</span><span class="p">(</span><span class="n">default_path</span><span class="o">=</span><span class="s">'config.yaml'</span><span class="p">,</span> <span class="n">default_level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">):</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">default_path</span>
+    <span class="k">if</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">io</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s">'r'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="n">yaml</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="n">logging</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">dictConfig</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">default_level</span><span class="p">)</span>
+ 
+ 
+<span class="k">def</span> <span class="nf">log</span><span class="p">():</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'Start'</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'Exec'</span><span class="p">)</span>
+    <span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'Finished'</span><span class="p">)</span>
+ 
+ 
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="n">yaml_path</span> <span class="o">=</span> <span class="s">'config.yaml'</span>
+    <span class="n">setup_logging</span><span class="p">(</span><span class="n">yaml_path</span><span class="p">)</span>
+    <span class="n">log</span><span class="p">()</span>
+    <span class="n">core</span><span class="p">.</span><span class="n">run</span><span class="p">()</span>
+
+</code></pre></div></div>
+<p>这里我们定义了一个 setup_logging() 方法，里面读取了 yaml 文件的配置，然后通过 dictConfig() 方法将配置项传给了 logging 模块进行全局初始化。</p>
+
+<p>另外这个模块还引入了另外一个模块 core，所以我们定义 core.py 如下：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">logging</span>
+ 
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">'main.core'</span><span class="p">)</span>
+ 
+<span class="k">def</span> <span class="nf">run</span><span class="p">():</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'Core Info'</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'Core Debug'</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">'Core Error'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>输出：</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span><span class="w"> </span><span class="n">python</span><span class="w"> </span><span class="nx">main.py</span><span class="w"> 
+</span><span class="mi">2020</span><span class="nt">-05-17</span><span class="w"> </span><span class="mi">14</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">905</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Exec</span><span class="w">
+</span><span class="nx">2020-05-17</span><span class="w"> </span><span class="nx">14:47:09</span><span class="p">,</span><span class="nx">905</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">Finished</span><span class="w">
+</span><span class="mi">2020</span><span class="nt">-05-17</span><span class="w"> </span><span class="mi">14</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">905</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Core</span><span class="w"> </span><span class="nx">Info</span><span class="w">
+</span><span class="mi">2020</span><span class="nt">-05-17</span><span class="w"> </span><span class="mi">14</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">905</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Core</span><span class="w"> </span><span class="nx">Info</span><span class="w">
+</span><span class="mi">2020</span><span class="nt">-05-17</span><span class="w"> </span><span class="mi">14</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">905</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Core</span><span class="w"> </span><span class="nx">Error</span><span class="w">
+</span><span class="mi">2020</span><span class="nt">-05-17</span><span class="w"> </span><span class="mi">14</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">905</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Core</span><span class="w"> </span><span class="nx">Error</span><span class="w">
+
+</span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w">  </span><span class="nx">error.log</span><span class="w"> 
+</span><span class="mi">2020</span><span class="nt">-05-17</span><span class="w"> </span><span class="mi">14</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">905</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">main.core</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">ERROR</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">Core</span><span class="w"> </span><span class="nx">Error</span><span class="w">
+
+</span><span class="err">$</span><span class="w">  </span><span class="n">cat</span><span class="w"> </span><span class="nx">debug.log</span><span class="w"> 
+</span><span class="mi">2020</span><span class="nt">-05-17</span><span class="w"> </span><span class="mi">14</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">905</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">main.core</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">INFO</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">Core</span><span class="w"> </span><span class="nx">Info</span><span class="w">
+</span><span class="mi">2020</span><span class="nt">-05-17</span><span class="w"> </span><span class="mi">14</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">905</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">main.core</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">DEBUG</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">Core</span><span class="w"> </span><span class="nx">Debug</span><span class="w">
+</span><span class="mi">2020</span><span class="nt">-05-17</span><span class="w"> </span><span class="mi">14</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">09</span><span class="p">,</span><span class="mi">905</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">main.core</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">ERROR</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">Core</span><span class="w"> </span><span class="nx">Error</span><span class="w">
+</span></code></pre></div></div>
+<h4 id="362-ini配置文件">3.6.2 ini配置文件</h4>
+<p>下面只展示了 ini 格式和 yaml 格式的配置。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test</span><span class="p">.</span><span class="n">ini</span> <span class="n">文件</span>
+<span class="p">[</span><span class="n">loggers</span><span class="p">]</span>
+<span class="n">keys</span><span class="o">=</span><span class="n">root</span><span class="p">,</span><span class="n">sampleLogger</span>
+
+<span class="p">[</span><span class="n">handlers</span><span class="p">]</span>
+<span class="n">keys</span><span class="o">=</span><span class="n">consoleHandler</span>
+
+<span class="p">[</span><span class="n">formatters</span><span class="p">]</span>
+<span class="n">keys</span><span class="o">=</span><span class="n">sampleFormatter</span>
+
+<span class="p">[</span><span class="n">logger_root</span><span class="p">]</span>
+<span class="n">level</span><span class="o">=</span><span class="n">DEBUG</span>
+<span class="n">handlers</span><span class="o">=</span><span class="n">consoleHandler</span>
+
+<span class="p">[</span><span class="n">logger_sampleLogger</span><span class="p">]</span>
+<span class="n">level</span><span class="o">=</span><span class="n">DEBUG</span>
+<span class="n">handlers</span><span class="o">=</span><span class="n">consoleHandler</span>
+<span class="n">qualname</span><span class="o">=</span><span class="n">sampleLogger</span>
+<span class="n">propagate</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="p">[</span><span class="n">handler_consoleHandler</span><span class="p">]</span>
+<span class="n">class</span><span class="o">=</span><span class="n">StreamHandler</span>
+<span class="n">level</span><span class="o">=</span><span class="n">DEBUG</span>
+<span class="n">formatter</span><span class="o">=</span><span class="n">sampleFormatter</span>
+<span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">,)</span>
+
+<span class="p">[</span><span class="n">formatter_sampleFormatter</span><span class="p">]</span>
+<span class="nb">format</span><span class="o">=%</span><span class="p">(</span><span class="n">asctime</span><span class="p">)</span><span class="n">s</span> <span class="o">-</span> <span class="o">%</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="n">s</span> <span class="o">-</span> <span class="o">%</span><span class="p">(</span><span class="n">levelname</span><span class="p">)</span><span class="n">s</span> <span class="o">-</span> <span class="o">%</span><span class="p">(</span><span class="n">message</span><span class="p">)</span><span class="n">s</span>
+</code></pre></div></div>
+
+<p>testinit.py 文件</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">logging.config</span>
+
+<span class="n">logging</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">fileConfig</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="s">'test.ini'</span><span class="p">,</span> <span class="n">disable_existing_loggers</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">"sampleLogger"</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'Core Info'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'Core Debug'</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">'Core Error'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>输出：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">python</span> <span class="n">test</span><span class="p">.</span><span class="n">py</span> 
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">,</span><span class="mi">328</span> <span class="o">-</span> <span class="n">sampleLogger</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">Core</span> <span class="n">Info</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">,</span><span class="mi">328</span> <span class="o">-</span> <span class="n">sampleLogger</span> <span class="o">-</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Core</span> <span class="n">Debug</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">15</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">47</span><span class="p">,</span><span class="mi">328</span> <span class="o">-</span> <span class="n">sampleLogger</span> <span class="o">-</span> <span class="n">ERROR</span> <span class="o">-</span> <span class="n">Core</span> <span class="n">Error</span>
+</code></pre></div></div>
+
+<h3 id="37-字符串拼接">3.7 字符串拼接</h3>
+<p>format() 构造与占位符用%</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">log8</span><span class="p">.</span><span class="n">py</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+ 
+<span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s">'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span><span class="p">)</span>
+ 
+<span class="c1"># bad
+</span><span class="n">logging</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'Hello {0}, {1}!'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="s">'World'</span><span class="p">,</span> <span class="s">'Congratulations'</span><span class="p">))</span>
+<span class="c1"># good
+</span><span class="n">logging</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'Hello %s, %s!'</span><span class="p">,</span> <span class="s">'World'</span><span class="p">,</span> <span class="s">'Congratulations'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>运行结果如下：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">python</span> <span class="n">log8</span><span class="p">.</span><span class="n">py</span> 
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span><span class="mi">709</span> <span class="o">-</span> <span class="n">root</span> <span class="o">-</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Hello</span> <span class="n">World</span><span class="p">,</span> <span class="n">Congratulations</span><span class="err">!</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">29</span><span class="p">,</span><span class="mi">709</span> <span class="o">-</span> <span class="n">root</span> <span class="o">-</span> <span class="n">DEBUG</span> <span class="o">-</span> <span class="n">Hello</span> <span class="n">World</span><span class="p">,</span> <span class="n">Congratulations</span><span class="err">!</span>
+</code></pre></div></div>
+
+<h3 id="38-异常处理">3.8 异常处理</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">cat</span> <span class="n">log9</span><span class="p">.</span><span class="n">py</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+ 
+<span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s">'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span><span class="p">)</span>
+ 
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="c1"># bad
+</span>    <span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">'Error: %s'</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="c1"># good
+</span>    <span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">'Error'</span><span class="p">,</span> <span class="n">exc_info</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="c1"># good
+</span>    <span class="n">logging</span><span class="p">.</span><span class="n">exception</span><span class="p">(</span><span class="s">'Error'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>结果输出：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">python</span> <span class="n">log9</span><span class="p">.</span><span class="n">py</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">51</span><span class="p">,</span><span class="mi">027</span> <span class="o">-</span> <span class="n">root</span> <span class="o">-</span> <span class="n">ERROR</span> <span class="o">-</span> <span class="n">Error</span><span class="p">:</span> <span class="n">integer</span> <span class="n">division</span> <span class="ow">or</span> <span class="n">modulo</span> <span class="n">by</span> <span class="n">zero</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">51</span><span class="p">,</span><span class="mi">027</span> <span class="o">-</span> <span class="n">root</span> <span class="o">-</span> <span class="n">ERROR</span> <span class="o">-</span> <span class="n">Error</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"log9.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">6</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="nb">ZeroDivisionError</span><span class="p">:</span> <span class="n">integer</span> <span class="n">division</span> <span class="ow">or</span> <span class="n">modulo</span> <span class="n">by</span> <span class="n">zero</span>
+<span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17</span> <span class="mi">14</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">51</span><span class="p">,</span><span class="mi">028</span> <span class="o">-</span> <span class="n">root</span> <span class="o">-</span> <span class="n">ERROR</span> <span class="o">-</span> <span class="n">Error</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s">"log9.py"</span><span class="p">,</span> <span class="n">line</span> <span class="mi">6</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="nb">ZeroDivisionError</span><span class="p">:</span> <span class="n">integer</span> <span class="n">division</span> <span class="ow">or</span> <span class="n">modulo</span> <span class="n">by</span> <span class="n">zero</span>
+</code></pre></div></div>
+
+<h3 id="39-日志文件按照时间划分或者按照大小划分">3.9 日志文件按照时间划分或者按照大小划分</h3>
+<p>如果将日志保存在一个文件中，那么时间一长，或者日志一多，单个日志文件就会很大，既不利于备份，也不利于查看。我们会想到能不能按照时间或者大小对日志文件进行划分呢？答案肯定是可以的，并且还很简单，logging 考虑到了我们这个需求。logging.handlers 文件中提供了 TimedRotatingFileHandler 和 RotatingFileHandler 类分别可以实现按时间和大小划分。打开这个 handles 文件，可以看到还有其他功能的 Handler 类，它们都继承自基类 BaseRotatingHandler。</p>
+
+<h4 id="391-timedrotatingfilehandler构造函数">3.9.1 TimedRotatingFileHandler构造函数</h4>
+<p>定义如下:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">TimedRotatingFileHandler</span><span class="p">(</span><span class="n">filename</span> <span class="p">[,</span><span class="n">when</span> <span class="p">[,</span><span class="n">interval</span> <span class="p">[,</span><span class="n">backupCount</span><span class="p">]]])</span>
+</code></pre></div></div>
+<p>示例：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 每隔 1小时 划分一个日志文件，interval 是时间间隔，备份文件为 10 个
+</span><span class="n">handler2</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">handlers</span><span class="p">.</span><span class="n">TimedRotatingFileHandler</span><span class="p">(</span><span class="s">"test.log"</span><span class="p">,</span> <span class="n">when</span><span class="o">=</span><span class="s">"H"</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">backupCount</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>filename： 是输出日志文件名的前缀，比如log/myapp.log</li>
+  <li>when ：是一个字符串的定义如下：
+ “S”: Seconds
+“M”: Minutes
+“H”: Hours
+“D”: Days
+“W”: Week day (0=Monday)
+“midnight”: Roll over at midnight</li>
+  <li>interval ：是指等待多少个单位when的时间后，Logger会自动重建文件</li>
+  <li>backupCount：是保留日志个数。默认的0是不会自动删除掉日志。若设3，则在文件的创建过程中库会判断是否有超过这个3，若超过，则会从最先创建的开始删除。</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">cat</span> <span class="n">log10</span><span class="p">.</span><span class="n">py</span> 
+<span class="c1">#!/usr/bin/python
+#---coding:utf-8
+</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">logging.handlers</span>
+<span class="kn">import</span> <span class="nn">datetime</span><span class="p">,</span><span class="n">time</span>
+
+<span class="c1">#logging    初始化工作
+</span><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">"zjlogger"</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+
+<span class="c1"># 添加TimedRotatingFileHandler
+# 定义一个1秒换一次log文件的handler
+# 保留3个旧log文件
+</span><span class="n">rf_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">handlers</span><span class="p">.</span><span class="n">TimedRotatingFileHandler</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">"all.log"</span><span class="p">,</span><span class="n">when</span><span class="o">=</span><span class="s">'S'</span><span class="p">,</span><span class="n">interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>\
+                                                       <span class="n">backupCount</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">rf_handler</span><span class="p">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s">"%(asctime)s - %(levelname)s - %(filename)s[:%(lineno)d] - %(message)s"</span><span class="p">))</span>
+
+<span class="c1">#在控制台打印日志
+</span><span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+<span class="n">handler</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">handler</span><span class="p">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s">"%(asctime)s - %(levelname)s - %(message)s"</span><span class="p">))</span>
+
+<span class="n">logger</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">rf_handler</span><span class="p">)</span>
+<span class="n">logger</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'debug message'</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">'info message'</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">warning</span><span class="p">(</span><span class="s">'warning message'</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="s">'error message'</span><span class="p">)</span>
+    <span class="n">logger</span><span class="p">.</span><span class="n">critical</span><span class="p">(</span><span class="s">'critical message'</span><span class="p">)</span>
+    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">ls</span>
+<span class="nb">all</span><span class="p">.</span><span class="n">log</span>  <span class="nb">all</span><span class="p">.</span><span class="n">log</span><span class="p">.</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17_15</span><span class="o">-</span><span class="mi">21</span><span class="o">-</span><span class="mi">55</span>  <span class="nb">all</span><span class="p">.</span><span class="n">log</span><span class="p">.</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17_15</span><span class="o">-</span><span class="mi">21</span><span class="o">-</span><span class="mi">56</span>  <span class="nb">all</span><span class="p">.</span><span class="n">log</span><span class="p">.</span><span class="mi">2020</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">17_15</span><span class="o">-</span><span class="mi">21</span><span class="o">-</span><span class="mi">57</span>  <span class="n">log10</span><span class="p">.</span><span class="n">py</span>
+</code></pre></div></div>
+
+<h4 id="392-rotatingfilehandler-构造函数">3.9.2 RotatingFileHandler 构造函数</h4>
+<p>示例：</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 每隔 1000 Byte 划分一个日志文件，备份文件为 3 个
+</span><span class="n">file_handler</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">handlers</span><span class="p">.</span><span class="n">RotatingFileHandler</span><span class="p">(</span><span class="s">"test.log"</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">"w"</span><span class="p">,</span> <span class="n">maxBytes</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">backupCount</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">)</span>
+<span class="n">复制代码</span>
+
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">cat</span> <span class="n">log11</span><span class="p">.</span><span class="n">py</span> 
+<span class="c1">#!coding:utf-8
+#!/usr/bin/env python
+</span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">logging.handlers</span>
+<span class="c1"># logging初始化工作
+</span><span class="n">logging</span><span class="p">.</span><span class="n">basicConfig</span><span class="p">()</span>
+<span class="c1"># myapp的初始化工作
+</span><span class="n">myapp</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">'myapp'</span><span class="p">)</span>
+<span class="n">myapp</span><span class="p">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="p">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="c1"># 写入文件，如果文件超过100个Bytes，仅保留5个文件。
+</span><span class="n">handler</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">handlers</span><span class="p">.</span><span class="n">RotatingFileHandler</span><span class="p">(</span>
+              <span class="s">'logs/myapp.log'</span><span class="p">,</span> <span class="n">maxBytes</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">backupCount</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">myapp</span><span class="p">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">myapp</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="s">"file test"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>输出：</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span> <span class="n">python</span> <span class="n">log11</span><span class="p">.</span><span class="n">py</span>
+<span class="n">INFO</span><span class="p">:</span><span class="n">myapp</span><span class="p">:</span><span class="nb">file</span> <span class="n">test</span>
+<span class="n">INFO</span><span class="p">:</span><span class="n">myapp</span><span class="p">:</span><span class="nb">file</span> <span class="n">test</span>
+<span class="n">INFO</span><span class="p">:</span><span class="n">myapp</span><span class="p">:</span><span class="nb">file</span> <span class="n">test</span>
+<span class="n">INFO</span><span class="p">:</span><span class="n">myapp</span><span class="p">:</span><span class="nb">file</span> <span class="n">test</span>
+<span class="p">.....</span>
+<span class="err">$</span> <span class="n">ls</span> <span class="n">logs</span>
+<span class="n">myapp</span><span class="p">.</span><span class="n">log</span>  <span class="n">myapp</span><span class="p">.</span><span class="n">log</span><span class="p">.</span><span class="mi">1</span>  <span class="n">myapp</span><span class="p">.</span><span class="n">log</span><span class="p">.</span><span class="mi">2</span>  <span class="n">myapp</span><span class="p">.</span><span class="n">log</span><span class="p">.</span><span class="mi">3</span>  <span class="n">myapp</span><span class="p">.</span><span class="n">log</span><span class="p">.</span><span class="mi">4</span>  <span class="n">myapp</span><span class="p">.</span><span class="n">log</span><span class="p">.</span><span class="mi">5</span>
+</code></pre></div></div>
+
+<p>参考链接:
+<a href="https://cuiqingcai.com/6080.html">进击的Coder</a></p>
+
+<p><a href="https://www.jianshu.com/p/5a4e226444bd">vigny的先生</a></p>
+
+<p><a href="https://www.jianshu.com/p/feb86c06c4f4">好吃的野菜</a></p>
+:ET
