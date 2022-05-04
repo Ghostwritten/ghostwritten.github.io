@@ -4,7 +4,7 @@ description: 'Artificial Intelligence trends and concepts made easy.' # this mea
 permalink: ':title:output_ext'
 baseurl: "/" # the subpath of your site, e.g. /blog
 #url: "https://ghostwritten.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
-#url: "https://smoothies.com.cn/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://smoothies.com.cn" # the base hostname & protocol for your site, e.g. http://example.com
 #url: "https://the-mvm.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 logo: "/assets/img/branding/MVM-logo-full.svg"
 logo-icon: "/assets/img/branding/MVM-symbol.svg"
@@ -33,7 +33,7 @@ about-author: Engineer, industry executive, research enthusiast. Avid learner wi
 # Contact links
 email: 1zoxun1@gmail.com # Add your Email address
 phone: # Add your Phone number
-website: https://smoothies.com.cn/ # Add your website
+website: https://smoothies.com.cn # Add your website
 linkedin: amaynez # Add your Linkedin handle
 github: ghostwritten # Add your Github handle
 twitter: '@ghostwrittencn' # Add your Twitter handle
