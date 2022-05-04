@@ -1,11 +1,18 @@
 ---
 layout: post
+read_time: true
+show_date: true
 title: Markdown语法简介
 date: 2013-07-16
+description: Single neuron perceptron that classifies elements learning quite quickly.
+img: posts/20210125/Perceptron.jpg 
+tags: [markdown]
 Author: Shengbin 
-tags: [sample, markdown]
 comments: true
 toc: true
+github: amaynez/GameOfLife/
+
+
 ---
 
 本中文版Markdown语法简介来自博客 <https://blog.shengbin.me/posts/markdown-syntax>，并由我完成了汉化。其中的站位文字来自[狗屁不通文章生成器](https://suulnnka.github.io/BullshitGenerator/index.html)。
