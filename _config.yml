@@ -1,6 +1,6 @@
 # Site settings
-title: The Minimum Viable Model
-description: 'Artificial Intelligence trends and concepts made easy.' # this means to ignore newlines until "baseurl:"
+title: 爱死亡机器人
+description: '活在当下，及时行乐.' # this means to ignore newlines until "baseurl:"
 permalink: ':title:output_ext'
 baseurl: "/" # the subpath of your site, e.g. /blog
 #url: "https://ghostwritten.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
@@ -26,9 +26,9 @@ logo-dark: "/assets/img/branding/MVM-logo-full-dark.svg"
 highlight_theme: syntax-base16.monokai.dark # select a dark theme for the code highlighter if needed
 
 # Author settings
-author: Armando Maynez # add your name
+author: Ghostwritten # add your name
 author-pic: Myself_Neon_grey.jpg
-about-author: Engineer, industry executive, research enthusiast. Avid learner with diverse interests in coding, machine learning, artificial intelligence and reinforcement learning. 17+ years of experience working in multinational corporations.
+about-author: 我是一名在北京参与内卷工程的 cloud Natvie 工程师，4年工作经验，虽然毕业于一宗古老的中药学科，但更着迷旅行，音乐，摄影。
 
 # Contact links
 email: 1zoxun1@gmail.com # Add your Email address

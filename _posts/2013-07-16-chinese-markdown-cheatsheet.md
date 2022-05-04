@@ -10,7 +10,7 @@ tags: [markdown]
 Author: Shengbin 
 comments: true
 toc: true
-github: amaynez/GameOfLife/
+
 
 
 ---
