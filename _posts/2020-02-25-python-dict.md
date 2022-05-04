@@ -1,12 +1,17 @@
 ---
 layout: post
+read_time: true
+show_date: true
+title: python 字典（dict）
 date: '2020-02-25 00:30:00'
+description: 元组使用小括号，元素不能修改，使用逗号隔开。
+img: posts/girl/1_Portrait382-1280x640.jpg
+tags: [python]
 author: 幽灵代笔
-tags:
-- python
 toc: true
 comments: true
-title: python 字典（dict）
+
+
 ---
 
 字典特点

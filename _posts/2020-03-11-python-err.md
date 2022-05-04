@@ -1,12 +1,17 @@
 ---
-title: python异常处理
 layout: post
+read_time: true
+show_date: true
+title: python 异常处理
 date: '2020-03-11 12:30:00'
-tags:
-- python
+description: 元组使用小括号，元素不能修改，使用逗号隔开。
+img: posts/girl/1_Portrait382-1280x640.jpg
+tags: [python]
 author: 幽灵代笔
 toc: true
 comments: true
+
+
 ---
 
 异常即是一个事件，该事件会在程序执行过程中发生，影响了程序的正常执行。

@@ -6,11 +6,12 @@ title: python 元组（tuple）
 date: '2020-02-24 11:30:00'
 description: 元组使用小括号，元素不能修改，使用逗号隔开。
 img: posts/girl/1_Portrait382-1280x640.jpg 
-tags:
-- python
+tags: [python]
 author: 幽灵代笔
 toc: true
 comments: true
+
+
 ---
 
 特点：

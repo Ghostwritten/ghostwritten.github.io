@@ -1,11 +1,17 @@
 ---
-title: shell条件判断
 layout: post
+read_time: true
+show_date: true
+title: shell 条件判断
 date: '2020-03-12 17:25:00'
-tags:
-- shell
-Author: 幽灵代笔
+description: 元组使用小括号，元素不能修改，使用逗号隔开。
+img: posts/girl/1_Portrait382-1280x640.jpg
+tags: [shell]
+author: 幽灵代笔
+toc: true
 comments: true
+
+
 ---
 
 ## 1. 判断
