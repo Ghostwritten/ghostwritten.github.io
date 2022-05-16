@@ -1,0 +1,329 @@
+I"�~<h2 id="1-背景">1 背景</h2>
+
+<p>在提权过程中需要通过掌握的信息来对系统、软件等存在的漏洞进行搜索，获取其利用的poc，通过编译后，实施提权。searchsploit提供漏洞本地和在线查询，是渗透测试中提权的重要武器。</p>
+
+<h2 id="2-简介">2 简介</h2>
+
+<p><a href="https://github.com/offensive-security/exploit-database">Exploit Database</a> 这是 <a href="https://www.offensive-security.com/">Offensive Security</a> 赞助的一个项目。存储了大量的漏洞利用程序，可以帮助安全研究者和渗透测试工程师更好的进行安全测试工作，目前是世界上公开收集漏洞最全的数据库，该仓库每天都会更新，exploit-db提供searchsploit利用files.csv进行搜索离线漏洞库文件的位置。</p>
+
+<h2 id="3-下载安装更新">3. 下载、安装、更新</h2>
+
+<ul>
+  <li>直接<a href="https://codeload.github.com/offensive-security/exploit-database/zip/master">下载</a></li>
+  <li>git clone <a href="https://github.com/offensive-security/exploit-database.git">https://github.com/offensive-security/exploit-database.git</a></li>
+</ul>
+
+<p>安装</p>
+
+<ul>
+  <li>centos 安装：yum install exploitdb</li>
+  <li>MacOS安装：brew update &amp;&amp; brew install exploitdb</li>
+  <li>kali安装：apt update &amp;&amp; apt -y install exploitdb</li>
+</ul>
+
+<p>使用命令关联searchsploit：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ln</span> <span class="nt">-sf</span> /opt/exploit-database/searchsploit   /usr/local/bin/searchsploit
+</code></pre></div></div>
+
+<p>更新</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>searchsploit –u
+</code></pre></div></div>
+
+<h2 id="4-语法">4. 语法</h2>
+
+<p>用法</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>searchsploit  [选线] term1 <span class="o">[</span>term2] ... <span class="o">[</span>termN]
+</code></pre></div></div>
+
+<p>选项：</p>
+
+<ul>
+  <li>c, –case [Term] 执行区分大小写的搜索，缺省是对大小写不敏感。</li>
+  <li>e, –exact [Term] 对exploit标题执行EXACT匹配（默认为AND）</li>
+  <li>h, –help 在屏幕上显示帮助</li>
+  <li>j, –json [Term] 以JSON格式显示结果</li>
+  <li>m, –mirror [EDB-ID] 将一个漏洞利用镜像（副本）到当前工作目录，后面跟漏洞ID号</li>
+  <li>o, –overflow [Term] Exploit标题被允许溢出其列</li>
+  <li>p, –path [EDB-ID] 显示漏洞利用的完整路径（如果可能，还将路径复制到剪贴板），后面跟漏洞ID号</li>
+  <li>t, –title [Term] 仅仅搜索漏洞标题（默认是标题和文件的路径）</li>
+  <li>u, –update 检查并安装任何exploitdb软件包更新（deb或git）</li>
+  <li>w, –www [Term] 显示Exploit-DB.com的URL而不是本地路径（在线搜索）</li>
+  <li>x, –examine [EDB-ID] 使用$ PAGER检查（副本）漏洞利用</li>
+  <li>-colour 在搜索结果中禁用颜色突出显示.</li>
+  <li>-id 显示EDB-ID值而不是本地路径</li>
+  <li>-nmap [file.xml] 使用服务版本检查Nmap XML输出中的所有结果（例如：nmap -sV -oX file.xml）。</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>-exclude=”term” 从结果中删除值。通过使用“</td>
+          <td>”分隔多个值，例如–exclude =“term1</td>
+          <td>term2</td>
+          <td>term3”。</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="5-实例">5. 实例</h2>
+
+<h3 id="51-帮助">5.1 帮助</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./searchsploit <span class="nt">-h</span>
+  Usage: searchsploit <span class="o">[</span>options] term1 <span class="o">[</span>term2] ... <span class="o">[</span>termN]
+
+<span class="o">==========</span>
+ Examples 
+<span class="o">==========</span>
+  searchsploit afd windows <span class="nb">local
+  </span>searchsploit <span class="nt">-t</span> oracle windows
+  searchsploit <span class="nt">-p</span> 39446
+  searchsploit linux kernel 3.2 <span class="nt">--exclude</span><span class="o">=</span><span class="s2">"(PoC)|/dos/"</span>
+  searchsploit <span class="nt">-s</span> Apache Struts 2.0.0
+  searchsploit linux reverse password
+  searchsploit <span class="nt">-j</span> 55555 | json_pp
+
+  For more examples, see the manual: https://www.exploit-db.com/searchsploit
+
+<span class="o">=========</span>
+ Options 
+<span class="o">=========</span>
+<span class="c">## Search Terms</span>
+   <span class="nt">-c</span>, <span class="nt">--case</span>     <span class="o">[</span>Term]      Perform a <span class="k">case</span><span class="nt">-sensitive</span> search <span class="o">(</span>Default is inSEnsITiVe<span class="p">)</span>
+   <span class="nt">-e</span>, <span class="nt">--exact</span>    <span class="o">[</span>Term]      Perform an EXACT &amp; order match on exploit title <span class="o">(</span>Default is an AND match on each term<span class="o">)</span> <span class="o">[</span>Implies <span class="s2">"-t"</span><span class="o">]</span>
+                                e.g. <span class="s2">"WordPress 4.1"</span> would not be detect <span class="s2">"WordPress Core 4.1"</span><span class="o">)</span>
+   <span class="nt">-s</span>, <span class="nt">--strict</span>               Perform a strict search, so input values must exist, disabling fuzzy search <span class="k">for </span>version range
+                                e.g. <span class="s2">"1.1"</span> would not be detected <span class="k">in</span> <span class="s2">"1.0 &lt; 1.3"</span><span class="o">)</span>
+   <span class="nt">-t</span>, <span class="nt">--title</span>    <span class="o">[</span>Term]      Search JUST the exploit title <span class="o">(</span>Default is title AND the file<span class="s1">'s path)
+       --exclude="term"       Remove values from results. By using "|" to separate, you can chain multiple values
+                                e.g. --exclude="term1|term2|term3"
+
+## Output
+   -j, --json     [Term]      Show result in JSON format
+   -o, --overflow [Term]      Exploit titles are allowed to overflow their columns
+   -p, --path     [EDB-ID]    Show the full path to an exploit (and also copies the path to the clipboard if possible)
+   -v, --verbose              Display more information in output
+   -w, --www      [Term]      Show URLs to Exploit-DB.com rather than the local path
+       --id                   Display the EDB-ID value rather than local path
+       --colour               Disable colour highlighting in search results
+
+## Non-Searching
+   -m, --mirror   [EDB-ID]    Mirror (aka copies) an exploit to the current working directory
+   -x, --examine  [EDB-ID]    Examine (aka opens) the exploit using $PAGER
+
+## Non-Searching
+   -h, --help                 Show this help screen
+   -u, --update               Check for and install any exploitdb package updates (brew, deb &amp; git)
+
+## Automation
+       --nmap     [file.xml]  Checks all results in Nmap'</span>s XML output with service version
+                                e.g.: nmap <span class="o">[</span>host] <span class="nt">-sV</span> <span class="nt">-oX</span> file.xml
+
+<span class="o">=======</span>
+ Notes 
+<span class="o">=======</span>
+ <span class="k">*</span> You can use any number of search terms
+ <span class="k">*</span> By default, search terms are not <span class="k">case</span><span class="nt">-sensitive</span>, ordering is irrelevant, and will search between version ranges
+   <span class="k">*</span> Use <span class="s1">'-c'</span> <span class="k">if </span>you wish to reduce results by <span class="k">case</span><span class="nt">-sensitive</span> searching
+   <span class="k">*</span> And/Or <span class="s1">'-e'</span> <span class="k">if </span>you wish to filter results by using an exact match
+   <span class="k">*</span> And/Or <span class="s1">'-s'</span> <span class="k">if </span>you wish to look <span class="k">for </span>an exact version match
+ <span class="k">*</span> Use <span class="s1">'-t'</span> to exclude the file<span class="s1">'s path to filter the search results
+   * Remove false positives (especially when searching using numbers - i.e. versions)
+ * When using '</span><span class="nt">--nmap</span><span class="s1">', adding '</span><span class="nt">-v</span><span class="s1">' (verbose), it will search for even more combinations
+ * When updating or displaying help, search terms will be ignored
+</span></code></pre></div></div>
+
+<h3 id="52-搜索漏洞关键字afd的windows本地利用漏洞">5.2 搜索漏洞关键字afd的Windows本地利用漏洞</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./searchsploit afd windows <span class="nb">local</span>
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#1): /root/exploitdb-master/files_exploits.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"/root/exploitdb-master/.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_exploits.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#1): /root/exploitdb-master/files_shellcodes.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"/root/exploitdb-master/.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_shellcodes.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------</span> Exploit Title                                                        |  Path
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------Microsoft</span> Windows <span class="o">(</span>x86<span class="o">)</span> - <span class="s1">'afd.sys'</span> Local Privilege Escalation <span class="o">(</span>MS11- | windows_x86/local/40564.c
+Microsoft Windows - <span class="s1">'afd.sys'</span> Local Kernel <span class="o">(</span>PoC<span class="o">)</span> <span class="o">(</span>MS11-046<span class="o">)</span>           | windows/dos/18755.c
+Microsoft Windows - <span class="s1">'AfdJoinLeaf'</span> Local Privilege Escalation <span class="o">(</span>MS11-08 | windows/local/21844.rb
+Microsoft Windows 7 <span class="o">(</span>x64<span class="o">)</span> - <span class="s1">'afd.sys'</span> Dangling Pointer Privilege Esca | windows_x86-64/local/39525.py
+Microsoft Windows 7 <span class="o">(</span>x86<span class="o">)</span> - <span class="s1">'afd.sys'</span> Dangling Pointer Privilege Esca | windows_x86/local/39446.py
+Microsoft Windows XP - <span class="s1">'afd.sys'</span> Local Kernel Denial of Service       | windows/dos/17133.c
+Microsoft Windows XP/2003 - <span class="s1">'afd.sys'</span> Local Privilege Escalation <span class="o">(</span>K-p | windows/local/6757.txt
+Microsoft Windows XP/2003 - <span class="s1">'afd.sys'</span> Local Privilege Escalation <span class="o">(</span>MS1 | windows/local/18176.py
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------Shellcodes</span>: No Results
+</code></pre></div></div>
+
+<h3 id="53-搜索标题中包含oracle-windows的漏洞">5.3 搜索标题中包含oracle windows的漏洞</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./searchsploit <span class="nt">-t</span> oracle windows
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#1): /root/exploitdb-master/files_exploits.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"/root/exploitdb-master/.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_exploits.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#1): /root/exploitdb-master/files_shellcodes.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"/root/exploitdb-master/.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_shellcodes.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------</span> Exploit Title                                                        |  Path
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------</span>
+Oracle 10g <span class="o">(</span>Windows x86<span class="o">)</span> - <span class="s1">'PROCESS_DUP_HANDLE'</span> Local Privilege Escal | windows_x86/local/3451.c
+Oracle 9i XDB <span class="o">(</span>Windows x86<span class="o">)</span> - FTP PASS Overflow <span class="o">(</span>Metasploit<span class="o">)</span>          | windows_x86/remote/16731.rb
+Oracle 9i XDB <span class="o">(</span>Windows x86<span class="o">)</span> - FTP UNLOCK Overflow <span class="o">(</span>Metasploit<span class="o">)</span>        | windows_x86/remote/16714.rb
+Oracle 9i XDB <span class="o">(</span>Windows x86<span class="o">)</span> - HTTP PASS Overflow <span class="o">(</span>Metasploit<span class="o">)</span>         | windows_x86/remote/16809.rb
+Oracle MySQL <span class="o">(</span>Windows<span class="o">)</span> - FILE Privilege Abuse <span class="o">(</span>Metasploit<span class="o">)</span>            | windows/remote/35777.rb
+Oracle MySQL <span class="o">(</span>Windows<span class="o">)</span> - MOF Execution <span class="o">(</span>Metasploit<span class="o">)</span>                   | windows/remote/23179.rb
+Oracle MySQL <span class="k">for </span>Microsoft Windows - Payload Execution <span class="o">(</span>Metasploit<span class="o">)</span>   | windows/remote/16957.rb
+Oracle VirtualBox Guest Additions 5.1.18 - Unprivileged Windows User- | multiple/dos/41932.cpp
+Oracle VM VirtualBox 5.0.32 r112930 <span class="o">(</span>x64<span class="o">)</span> - Windows Process COM Injec | windows_x86-64/local/41908.txt
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------Shellcodes</span>: No Results
+</code></pre></div></div>
+
+<h3 id="54-搜索漏洞号为39446的漏洞">5.4 搜索漏洞号为39446的漏洞</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./searchsploit <span class="nt">-p</span> 39446
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#1): /root/exploitdb-master/files_exploits.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"/root/exploitdb-master/.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_exploits.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#1): /root/exploitdb-master/files_shellcodes.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"/root/exploitdb-master/.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_shellcodes.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+  Exploit: Microsoft Windows 7 <span class="o">(</span>x86<span class="o">)</span> - <span class="s1">'afd.sys'</span> Dangling Pointer Privilege Escalation <span class="o">(</span>MS14-040<span class="o">)</span>
+      URL: https://www.exploit-db.com/exploits/39446
+     Path: /root/exploitdb-master/exploits/windows_x86/local/39446.py
+File Type: Python script, ASCII text executable
+</code></pre></div></div>
+
+<h3 id="55-排除dos以及poc值的包含linux-kernel-32的漏洞">5.5 排除dos以及PoC值的包含linux kernel 3.2的漏洞</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./searchsploit linux kernel 3.2 <span class="nt">--exclude</span><span class="o">=</span><span class="s2">"(PoC)|/dos/"</span>
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#1): /root/exploitdb-master/files_exploits.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"/root/exploitdb-master/.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_exploits.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#1): /root/exploitdb-master/files_shellcodes.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"/root/exploitdb-master/.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_shellcodes.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------</span> Exploit Title                                                        |  Path
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------</span>
+Linux Kernel <span class="o">(</span>Solaris 10 / &lt; 5.10 138888-01<span class="o">)</span> - Local Privilege Escala | solaris/local/15962.c
+Linux Kernel 2.6.19 &lt; 5.9 - <span class="s1">'Netfilter Local Privilege Escalation     | linux/local/50135.c
+Linux Kernel 2.6.22 &lt; 3.9 (x86/x64) - '</span>Dirty COW /proc/self/mem<span class="s1">' Race | linux/local/40616.c
+Linux Kernel 2.6.22 &lt; 3.9 - '</span>Dirty COW /proc/self/mem<span class="s1">' Race Condition | linux/local/40847.cpp
+Linux Kernel 2.6.22 &lt; 3.9 - '</span>Dirty COW PTRACE_POKEDATA<span class="s1">' Race Conditio | linux/local/40838.c
+Linux Kernel 2.6.22 &lt; 3.9 - '</span>Dirty COW<span class="s1">' '</span>PTRACE_POKEDATA<span class="s1">' Race Condit | linux/local/40839.c
+Linux Kernel 2.6.22 &lt; 3.9 - '</span>Dirty COW<span class="s1">' /proc/self/mem Race Condition | linux/local/40611.c
+Linux Kernel 2.6.39 &lt; 3.2.2 (Gentoo / Ubuntu x86/x64) - '</span>Mempodipper<span class="s1">' | linux/local/18411.c
+Linux Kernel 2.6.39 &lt; 3.2.2 (x86/x64) - '</span>Mempodipper<span class="s1">' Local Privilege | linux/local/35161.c
+Linux Kernel 3.0 &lt; 3.3.5 - '</span>CLONE_NEWUSER|CLONE_FS<span class="s1">' Local Privilege E | linux/local/38390.c
+Linux Kernel 3.14-rc1 &lt; 3.15-rc4 (x64) - Raw Mode PTY Echo Race Condi | linux_x86-64/local/33516.c
+Linux Kernel 3.2.0-23/3.5.0-23 (Ubuntu 12.04/12.04.1/12.04.2 x64) - '</span> | linux_x86-64/local/33589.c
+Linux Kernel 3.2.x - <span class="s1">'uname()'</span> System Call Local Information Disclosu | linux/local/37937.c
+Linux Kernel 3.4 &lt; 3.13.2 <span class="o">(</span>Ubuntu 13.04/13.10 x64<span class="o">)</span> - <span class="s1">'CONFIG_X86_X32= | linux_x86-64/local/31347.c
+Linux Kernel 3.4 &lt; 3.13.2 (Ubuntu 13.10) - '</span>CONFIG_X86_X32<span class="s1">' Arbitrary | linux/local/31346.c
+Linux Kernel 4.8.0 UDEV &lt; 232 - Local Privilege Escalation            | linux/local/41886.c
+Linux Kernel &lt; 3.16.1 - '</span>Remount FUSE<span class="s1">' Local Privilege Escalation     | linux/local/34923.c
+Linux Kernel &lt; 3.16.39 (Debian 8 x64) - '</span>inotfiy<span class="s1">' Local Privilege Esc | linux_x86-64/local/44302.c
+Linux Kernel &lt; 3.2.0-23 (Ubuntu 12.04 x64) - '</span>ptrace/sysret<span class="s1">' Local Pr | linux_x86-64/local/34134.c
+Linux Kernel &lt; 3.4.5 (Android 4.2.2/4.4 ARM) - Local Privilege Escala | arm/local/31574.c
+Linux Kernel &lt; 3.5.0-23 (Ubuntu 12.04.2 x64) - '</span>SOCK_DIAG<span class="s1">' SMEP Bypas | linux_x86-64/local/44299.c
+Linux Kernel &lt; 3.8.9 (x86-64) - '</span>perf_swevent_init<span class="s1">' Local Privilege E | linux_x86-64/local/26131.c
+Linux Kernel &lt; 3.8.x - open-time Capability '</span>file_ns_capable<span class="o">()</span><span class="s1">' Local | linux/local/25450.c
+Linux kernel &lt; 4.10.15 - Race Condition Privilege Escalation          | linux/local/43345.c
+Linux Kernel &lt; 4.11.8 - '</span>mq_notify: double sock_put<span class="o">()</span><span class="s1">' Local Privileg | linux/local/45553.c
+Linux Kernel &lt; 4.13.9 (Ubuntu 16.04 / Fedora 27) - Local Privilege Es | linux/local/45010.c
+Linux Kernel &lt; 4.15.4 - '</span>show_floppy<span class="s1">' KASLR Address Leak              | linux/local/44325.c
+Linux Kernel &lt; 4.4.0-116 (Ubuntu 16.04.4) - Local Privilege Escalatio | linux/local/44298.c
+Linux Kernel &lt; 4.4.0-21 (Ubuntu 16.04 x64) - '</span>netfilter target_offset | linux_x86-64/local/44300.c
+Linux Kernel &lt; 4.4.0-83 / &lt; 4.8.0-58 <span class="o">(</span>Ubuntu 14.04/16.04<span class="o">)</span> - Local Pri | linux/local/43418.c
+Linux Kernel &lt; 4.4.0/ &lt; 4.8.0 <span class="o">(</span>Ubuntu 14.04/16.04 / Linux Mint 17/18  | linux/local/47169.c
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------Shellcodes</span>: No Results
+</code></pre></div></div>
+
+<h3 id="56-查找mssql的漏洞">5.6 查找mssql的漏洞</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./searchsploit mssql
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#1): /root/exploitdb-master/files_exploits.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"/root/exploitdb-master/.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_exploits.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#1): /root/exploitdb-master/files_shellcodes.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"/root/exploitdb-master/.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_shellcodes.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------</span> Exploit Title                                                        |  Path
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------ADODB</span> 4.6/4.7 - <span class="s1">'Tmssql.php'</span> Cross-Site Scripting                     | php/webapps/28104.txt
+ADODB &lt; 4.70 - <span class="s1">'tmssql.php'</span> Denial of Service                         | php/dos/1651.php
+AutoDealer 1.0/2.0 - MSSQL Injection                                  | php/webapps/12462.txt
+MSSQL 7.0 - Remote Denial of Service                                  | windows/dos/562.c
+PHP 4.4.6 - <span class="s1">'mssql_[p]connect()'</span> Local Buffer Overflow                | windows/local/3417.php
+XAMPP <span class="k">for </span>Windows 1.6.0a - <span class="s1">'mssql_connect()'</span> Remote Buffer Overflow   | windows/remote/3738.php
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------Shellcodes</span>: No Results
+</code></pre></div></div>
+
+<h3 id="57-查找和window-xp有关的漏洞">5.7 查找和window XP有关的漏洞</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./searchsploit /xp
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#2): ./files_exploits.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"./.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_exploits.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#2): ./files_shellcodes.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"./.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_shellcodes.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------</span> Exploit Title                                                        |  Path
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------Apple</span> QuickTime 7.2/7.3 <span class="o">(</span>Windows Vista/XP<span class="o">)</span> - RSTP Response Code Execu | windows/remote/4651.cpp
+Microsoft Office 2000/2003/2004/XP - File Memory Corruption           | windows/dos/31361.txt
+Microsoft Windows 2000/XP - SMB Authentication Remote Overflow        | windows/remote/20.txt
+Microsoft Windows 98/XP/ME - UPnP NOTIFY Buffer Overflow <span class="o">(</span>1<span class="o">)</span>          | windows/remote/21188.c
+Microsoft Windows 98/XP/ME - UPnP NOTIFY Buffer Overflow <span class="o">(</span>2<span class="o">)</span>          | windows/remote/21189.c
+Microsoft Windows NT/2000/2003/2008/XP/Vista/7 - <span class="s1">'KiTrap0D'</span> User Mode | windows/local/11199.txt
+Microsoft Windows NT/2000/2003/2008/XP/Vista/7/8 - <span class="s1">'EPATHOBJ'</span> Local R | windows/local/25912.c
+Mozilla Firefox 1.5.0.2 - <span class="s1">'js320.dll/xpcom_core.dll'</span> Denial of Servic | multiple/dos/1716.html
+Novell Client <span class="k">for </span>Windows 2000/XP - ActiveX Remote Denial of Service  | windows/dos/9516.txt
+PSOProxy 0.91 <span class="o">(</span>Windows 2000/XP<span class="o">)</span> - Remote Buffer Overflow              | windows/remote/156.c
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">-------------------------------------------------------------------------------------------------------</span> <span class="nt">---------------------------------</span> Shellcode Title                                                      |  Path
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------Windows</span> <span class="o">(</span>2000/XP/7<span class="o">)</span> - URLDownloadToFile<span class="o">(</span>http://bflow.security-portal. | windows/24318.c
+Windows <span class="o">(</span>9x/NT/2000/XP<span class="o">)</span> - PEB Method Shellcode <span class="o">(</span>29 bytes<span class="o">)</span>             | windows_x86/13525.c
+Windows <span class="o">(</span>9x/NT/2000/XP<span class="o">)</span> - PEB Method Shellcode <span class="o">(</span>31 bytes<span class="o">)</span>             | windows_x86/13526.c
+Windows <span class="o">(</span>9x/NT/2000/XP<span class="o">)</span> - PEB Method Shellcode <span class="o">(</span>35 bytes<span class="o">)</span>             | windows_x86/13527.c
+Windows <span class="o">(</span>9x/NT/2000/XP<span class="o">)</span> - Reverse Generic Without Loader <span class="o">(</span>192.168.1.1 | windows_x86/13524.txt
+Windows <span class="o">(</span>NT/2000/XP<span class="o">)</span> <span class="o">(</span>Russian<span class="o">)</span> - Add Administartor User <span class="o">(</span>slim/shady<span class="o">)</span>  | windows_x86/13523.c
+Windows/x86 <span class="o">(</span>NT/XP<span class="o">)</span> - IsDebuggerPresent Shellcode <span class="o">(</span>39 bytes<span class="o">)</span>          | windows_x86/13518.c
+Windows/x86 <span class="o">(</span>NT/XP/2000/2003<span class="o">)</span> - Bind <span class="o">(</span>8721/TCP<span class="o">)</span> Shell Shellcode <span class="o">(</span>356  | windows_x86/43759.asm
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------</span>
+</code></pre></div></div>
+
+<h3 id="58-查找apple的漏洞">5.8 查找apple的漏洞</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./searchsploit apple
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#2): ./files_exploits.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"./.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_exploits.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+<span class="o">[</span>i] Found <span class="o">(</span><span class="c">#2): ./files_shellcodes.csv</span>
+<span class="o">[</span>i] To remove this message, please edit <span class="s2">"./.searchsploit_rc"</span> <span class="k">for</span> <span class="s2">"files_shellcodes.csv"</span> <span class="o">(</span>package_array: exploitdb<span class="o">)</span>
+
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------</span> Exploit Title                                                        |  Path
+<span class="nt">----------------------------------------------------------------------</span> <span class="nt">---------------------------------</span>
+Apple 2.0.4 - Safari Local Cross-Site Scripting                       | osx/local/29950.js
+Apple Airport - 802.11 Probe Response Kernel Memory Corruption <span class="o">(</span>PoC<span class="o">)</span>  | hardware/dos/2700.rb
+Apple At Ease 5.0 - Information Disclosure                            | osx/local/19427.txt
+Apple Bonjour <span class="k">for </span>Windows 1.0.4 - mDNSResponder Null Pointer Derefere | windows/dos/32350.txt
+Apple CFNetwork - HTTP Response Denial of Service                     | osx/dos/3200.rb
+Apple Directory Services - Memory Corruption                          | osx/dos/15491.txt
+..................
+</code></pre></div></div>
+
+<h2 id="6-技巧">6. 技巧</h2>
+
+<ul>
+  <li>1.查询关键字采取AND运算,SearchSploit使用AND运算符，而不是OR运算符。使用的术语越多，滤除的结果越多。</li>
+  <li>2.使用名称搜索时尽量使用全称</li>
+  <li>3.使用“-t”选项，默认情况下，searchsploit将检查该漏洞利用的标题以及该路径。根据搜索条件，这可能会导致误报（特别是在搜索与平台和版本号匹配的术语时），使用“-t”选项去掉多余数据。例如<code class="language-plaintext highlighter-rouge">searchsploit -t oracle windows</code>显示7行数据而<code class="language-plaintext highlighter-rouge">searchsploit   oracle windows |wc –l</code>显示90行数据。</li>
+  <li>4.在线搜索exploit-db.com中的关键字漏洞：<code class="language-plaintext highlighter-rouge">searchsploit  WarFTP 1.65 -w</code></li>
+  <li>
+    <p>5.搜索微软漏洞，搜索微软2014年的所有漏洞，关键字可以ms14，ms15，ms16，ms17，<code class="language-plaintext highlighter-rouge">searchsploit MS14</code></p>
+  </li>
+  <li><strong><a href="https://bughacking.com/how-to-use-searchsploit-in-kali-linux/">How to Use Searchsploit in Kali Linux?</a></strong></li>
+  <li><strong><a href="https://www.exploit-db.com/searchsploit">SearchSploit – The Manual</a></strong></li>
+  <li><strong><a href="https://www.geeksforgeeks.org/finding-exploit-offline-using-searchsploit-in-kali-linux/">Finding Exploit offline using Searchsploit in Kali Linux</a></strong></li>
+</ul>
+:ET
