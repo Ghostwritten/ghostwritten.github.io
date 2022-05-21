@@ -5,7 +5,7 @@ show_date: true
 title: 美剧
 date: 2022-05-21 0:40:00 -0600
 description: 美剧下载
-img: posts/painting/1_20190910_172005.jpg
+img: posts/series/1-series.png
 tags: [美剧]
 author: 幽灵代笔
 toc: true
