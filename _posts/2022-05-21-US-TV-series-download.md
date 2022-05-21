@@ -3,7 +3,7 @@ layout: post
 read_time: true
 show_date: true
 title: 美剧
-date: '2022-05-22 0:40:00'
+date: 2022-05-21 0:40:00 -0600
 description: 美剧下载
 img: posts/painting/1_20190910_172005.jpg
 tags: [美剧]
