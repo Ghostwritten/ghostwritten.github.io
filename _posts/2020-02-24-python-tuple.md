@@ -11,6 +11,7 @@ author: 幽灵代笔
 toc: true
 comments: true
 mathjax: yes
+category: opinion
 ---
 
 特点：
