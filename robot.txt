@@ -1,0 +1,5 @@
+# robots.txt for search engine
+User-agent: *
+Allow: /
+
+# Algolia-Crawler-Verif: 9BC99A0DA2A30365

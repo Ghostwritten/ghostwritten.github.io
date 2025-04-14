@@ -1,0 +1,26 @@
+{
+  "id": "ops/kubernetes/Components/Kubernetes_config_配置访问多集群",
+  "title": "Kubernetes config Overivew",
+  "description": "tags: config,对象",
+  "source": "@site/docs/ops/kubernetes/Components/Kubernetes_config_配置访问多集群.mdx",
+  "sourceDirName": "ops/kubernetes/Components",
+  "slug": "/ops/kubernetes/Components/Kubernetes_config_配置访问多集群",
+  "permalink": "/docs/ops/kubernetes/Components/Kubernetes_config_配置访问多集群",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/kubernetes/Components/Kubernetes_config_配置访问多集群.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {},
+  "sidebar": "kubernetesSidebar",
+  "previous": {
+    "title": "kubelet Overiview",
+    "permalink": "/docs/ops/kubernetes/Components/kubelet Overiview"
+  },
+  "next": {
+    "title": "kubespray offline install kubernetes",
+    "permalink": "/docs/ops/kubernetes/Install/kubespray offline install kubernetes"
+  }
+}

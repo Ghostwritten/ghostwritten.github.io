@@ -1,0 +1,25 @@
+{
+  "id": "ops/linux/System-Resources/system-load",
+  "title": "system-load",
+  "description": "",
+  "source": "@site/docs/ops/linux/System-Resources/system-load.mdx",
+  "sourceDirName": "ops/linux/System-Resources",
+  "slug": "/ops/linux/System-Resources/system-load",
+  "permalink": "/docs/ops/linux/System-Resources/system-load",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/linux/System-Resources/system-load.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {},
+  "sidebar": "linuxSidebar",
+  "previous": {
+    "title": "前言",
+    "permalink": "/docs/ops/linux/System-Resources/intro"
+  },
+  "next": {
+    "title": "利用_iso_配置_yum源",
+    "permalink": "/docs/ops/linux/利用_iso_配置_yum源"
+  }
+}

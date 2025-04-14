@@ -1,0 +1,41 @@
+{
+  "id": "ops/kubernetes/Install/kubespray offline install kubernetes",
+  "title": "kubespray offline install kubernetes",
+  "description": "深入解析 Kubernetes 的起源、架构与未来趋势，揭示它如何重塑现代基础设施的控制逻辑。",
+  "source": "@site/docs/ops/kubernetes/Install/kubespray-offline-install-kubernetes.mdx",
+  "sourceDirName": "ops/kubernetes/Install",
+  "slug": "/ops/kubernetes/Install/kubespray offline install kubernetes",
+  "permalink": "/en/docs/ops/kubernetes/Install/kubespray offline install kubernetes",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/kubernetes/Install/kubespray-offline-install-kubernetes.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "kubernetes",
+      "permalink": "/en/docs/tags/kubernetes"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "kubespray offline install kubernetes",
+    "id": "kubespray offline install kubernetes",
+    "description": "深入解析 Kubernetes 的起源、架构与未来趋势，揭示它如何重塑现代基础设施的控制逻辑。",
+    "hide_table_of_contents": true,
+    "sidebar_position": 1,
+    "authors": "ghostwritten",
+    "tags": [
+      "kubernetes"
+    ]
+  },
+  "sidebar": "kubernetesSidebar",
+  "previous": {
+    "title": "kubelet Overiview",
+    "permalink": "/en/docs/ops/kubernetes/Components/kubelet Overiview"
+  },
+  "next": {
+    "title": "Kubernetes_CNI网络",
+    "permalink": "/en/docs/ops/kubernetes/network/Kubernetes_CNI网络"
+  }
+}

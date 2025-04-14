@@ -1,0 +1,24 @@
+{
+  "id": "operations/linux/利用_iso_配置_yum源",
+  "title": "利用_iso_配置_yum源",
+  "description": "1. 虚拟机挂载 iso",
+  "source": "@site/docs/operations/linux/利用_iso_配置_yum源.md",
+  "sourceDirName": "operations/linux",
+  "slug": "/operations/linux/利用_iso_配置_yum源",
+  "permalink": "/docs/operations/linux/利用_iso_配置_yum源",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/operations/linux/利用_iso_配置_yum源.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes config Overivew",
+    "permalink": "/docs/operations/kubernetes/Kubernetes_config_配置访问多集群"
+  },
+  "next": {
+    "title": "查看_cpu、内存、磁盘相关指标",
+    "permalink": "/docs/operations/linux/查看_cpu、内存、磁盘相关指标"
+  }
+}

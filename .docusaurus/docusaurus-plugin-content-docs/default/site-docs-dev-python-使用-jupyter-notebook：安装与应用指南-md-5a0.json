@@ -1,0 +1,24 @@
+{
+  "id": "dev/python/使用_Jupyter_Notebook：安装与应用指南",
+  "title": "使用_Jupyter_Notebook：安装与应用指南",
+  "description": "在这里插入图片描述",
+  "source": "@site/docs/dev/python/使用_Jupyter_Notebook：安装与应用指南.md",
+  "sourceDirName": "dev/python",
+  "slug": "/dev/python/使用_Jupyter_Notebook：安装与应用指南",
+  "permalink": "/en/docs/dev/python/使用_Jupyter_Notebook：安装与应用指南",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/dev/python/使用_Jupyter_Notebook：安装与应用指南.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "pythonSidebar",
+  "previous": {
+    "title": "为什么要学编程与python的发展历史？",
+    "permalink": "/en/docs/dev/python/为什么要学编程与python的发展历史？"
+  },
+  "next": {
+    "title": "初识_Conda：一站式包管理和环境管理工具",
+    "permalink": "/en/docs/dev/python/初识_Conda：一站式包管理和环境管理工具"
+  }
+}

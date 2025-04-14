@@ -1,0 +1,39 @@
+{
+  "id": "ops/linux/System-Resources/Linux-View-System-Resource-Indicators",
+  "title": "Linux 查看系统资源指标",
+  "description": "Linux 如何查看CPU、内存、磁盘占比详情。",
+  "source": "@site/docs/ops/linux/System-Resources/Linux-View-System-Resource-Indicators.md",
+  "sourceDirName": "ops/linux/System-Resources",
+  "slug": "/ops/linux/System-Resources/Linux-View-System-Resource-Indicators",
+  "permalink": "/en/docs/ops/linux/System-Resources/Linux-View-System-Resource-Indicators",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/linux/System-Resources/Linux-View-System-Resource-Indicators.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "linux",
+      "permalink": "/en/docs/tags/linux"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Linux 查看系统资源指标",
+    "description": "Linux 如何查看CPU、内存、磁盘占比详情。",
+    "sidebar_position": 1,
+    "authors": "ghostwritten",
+    "tags": [
+      "linux"
+    ]
+  },
+  "sidebar": "linuxSidebar",
+  "previous": {
+    "title": "System Resources",
+    "permalink": "/en/docs/category/system-resources"
+  },
+  "next": {
+    "title": "了解平均负载和%CPU",
+    "permalink": "/en/docs/ops/linux/System-Resources/Understanding_Linux_Load_Average"
+  }
+}

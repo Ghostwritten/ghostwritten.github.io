@@ -1,0 +1,37 @@
+{
+  "id": "dev/python/intro",
+  "title": "前言",
+  "description": "人生苦短，只用Python。",
+  "source": "@site/docs/dev/python/intro.md",
+  "sourceDirName": "dev/python",
+  "slug": "/dev/python/intro",
+  "permalink": "/en/docs/dev/python/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/dev/python/intro.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "python",
+      "permalink": "/en/docs/tags/python"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "前言",
+    "id": "intro",
+    "description": "人生苦短，只用Python。",
+    "sidebar_position": 1,
+    "image": "/static/img/dev/python/cover.png",
+    "authors": "ghostwritten",
+    "tags": [
+      "python"
+    ]
+  },
+  "sidebar": "pythonSidebar",
+  "next": {
+    "title": "Conda_安装_Jupyter_Notebook",
+    "permalink": "/en/docs/dev/python/Conda_安装_Jupyter_Notebook"
+  }
+}

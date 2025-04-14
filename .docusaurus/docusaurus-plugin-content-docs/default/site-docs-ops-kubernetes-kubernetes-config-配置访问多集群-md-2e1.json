@@ -1,0 +1,26 @@
+{
+  "id": "ops/kubernetes/Kubernetes_config_配置访问多集群",
+  "title": "Kubernetes config Overivew",
+  "description": "tags: config,对象",
+  "source": "@site/docs/ops/kubernetes/Kubernetes_config_配置访问多集群.md",
+  "sourceDirName": "ops/kubernetes",
+  "slug": "/ops/kubernetes/Kubernetes_config_配置访问多集群",
+  "permalink": "/docs/ops/kubernetes/Kubernetes_config_配置访问多集群",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/kubernetes/Kubernetes_config_配置访问多集群.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {},
+  "sidebar": "kubernetesSidebar",
+  "previous": {
+    "title": "Kubernetes_CNI网络",
+    "permalink": "/docs/ops/kubernetes/Kubernetes_CNI网络"
+  },
+  "next": {
+    "title": "Kubernetes 介绍",
+    "permalink": "/docs/ops/kubernetes/Kubernetes 介绍"
+  }
+}

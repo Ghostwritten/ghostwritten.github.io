@@ -1,0 +1,24 @@
+{
+  "id": "dev/python/Python_3_输入与输出指南",
+  "title": "Python_3_输入与输出指南",
+  "description": "在这里插入图片描述",
+  "source": "@site/docs/dev/python/Python_3_输入与输出指南.md",
+  "sourceDirName": "dev/python",
+  "slug": "/dev/python/Python_3_输入与输出指南",
+  "permalink": "/docs/dev/python/Python_3_输入与输出指南",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/dev/python/Python_3_输入与输出指南.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "pythonSidebar",
+  "previous": {
+    "title": "Python_3_与_Python_2_的主要区别",
+    "permalink": "/docs/dev/python/Python_3_与_Python_2_的主要区别"
+  },
+  "next": {
+    "title": "Python_Docs",
+    "permalink": "/docs/dev/python/Python_Docs"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "ops/kubernetes/Components/kubelet Overiview",
+  "title": "kubelet Overiview",
+  "description": "深入解析 Kubernetes 的起源、架构与未来趋势，揭示它如何重塑现代基础设施的控制逻辑。",
+  "source": "@site/docs/ops/kubernetes/Components/Kubernetes_Kubelet-Overview.mdx",
+  "sourceDirName": "ops/kubernetes/Components",
+  "slug": "/ops/kubernetes/Components/kubelet Overiview",
+  "permalink": "/en/docs/ops/kubernetes/Components/kubelet Overiview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/kubernetes/Components/Kubernetes_Kubelet-Overview.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "kubernetes",
+      "permalink": "/en/docs/tags/kubernetes"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "kubelet Overiview",
+    "id": "kubelet Overiview",
+    "description": "深入解析 Kubernetes 的起源、架构与未来趋势，揭示它如何重塑现代基础设施的控制逻辑。",
+    "sidebar_position": 3,
+    "authors": "ghostwritten",
+    "tags": [
+      "kubernetes"
+    ]
+  },
+  "sidebar": "kubernetesSidebar",
+  "previous": {
+    "title": "Kubernetes Context Overivew",
+    "permalink": "/en/docs/ops/kubernetes/Components/Kubernetes Context Overivew"
+  },
+  "next": {
+    "title": "kubespray offline install kubernetes",
+    "permalink": "/en/docs/ops/kubernetes/Install/kubespray offline install kubernetes"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "ops/kubernetes/组件/api-server",
+  "title": "kubernetes api-server Overview",
+  "description": "{% youtube %}",
+  "source": "@site/docs/ops/kubernetes/组件/api-server.mdx",
+  "sourceDirName": "ops/kubernetes/组件",
+  "slug": "/ops/kubernetes/组件/api-server",
+  "permalink": "/docs/ops/kubernetes/组件/api-server",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/kubernetes/组件/api-server.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {},
+  "sidebar": "kubernetesSidebar",
+  "previous": {
+    "title": "Kubernetes config Overivew",
+    "permalink": "/docs/ops/kubernetes/Kubernetes_config_配置访问多集群"
+  }
+}

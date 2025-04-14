@@ -1,0 +1,37 @@
+{
+  "id": "ops/CICD/intro",
+  "title": "前言",
+  "description": "本文介绍了CI/CD的概念、历史、核心技术及优势，阐述了它作为现代软件开发加速引擎，如何实现快速、高质量、低风险的软件交付。",
+  "source": "@site/docs/ops/CICD/intro.md",
+  "sourceDirName": "ops/CICD",
+  "slug": "/ops/CICD/intro",
+  "permalink": "/en/docs/ops/CICD/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/CICD/intro.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "CI/CD",
+      "permalink": "/en/docs/tags/ci-cd"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "前言",
+    "id": "intro",
+    "description": "本文介绍了CI/CD的概念、历史、核心技术及优势，阐述了它作为现代软件开发加速引擎，如何实现快速、高质量、低风险的软件交付。",
+    "sidebar_position": 1,
+    "image": "/static/img/ops/CICD/cover.png",
+    "authors": "ghostwritten",
+    "tags": [
+      "CI/CD"
+    ]
+  },
+  "sidebar": "CICDSidebar",
+  "next": {
+    "title": "Gitlab",
+    "permalink": "/en/docs/category/gitlab"
+  }
+}

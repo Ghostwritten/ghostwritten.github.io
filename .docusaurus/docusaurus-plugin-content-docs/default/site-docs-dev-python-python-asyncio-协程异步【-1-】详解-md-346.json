@@ -1,0 +1,24 @@
+{
+  "id": "dev/python/python_asyncio_协程异步【1】详解",
+  "title": "python 模块 （1）asyncio 协程异步",
+  "description": "----",
+  "source": "@site/docs/dev/python/python_asyncio_协程异步【1】详解.md",
+  "sourceDirName": "dev/python",
+  "slug": "/dev/python/python_asyncio_协程异步【1】详解",
+  "permalink": "/docs/dev/python/python_asyncio_协程异步【1】详解",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/dev/python/python_asyncio_协程异步【1】详解.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "pythonSidebar",
+  "previous": {
+    "title": "python 模块 argparse参数配置",
+    "permalink": "/docs/dev/python/python_argparse参数配置详解"
+  },
+  "next": {
+    "title": "python 模块 cPickle 与 pickle 序列化",
+    "permalink": "/docs/dev/python/python_cPickle_与_pickle模块序列化详解"
+  }
+}

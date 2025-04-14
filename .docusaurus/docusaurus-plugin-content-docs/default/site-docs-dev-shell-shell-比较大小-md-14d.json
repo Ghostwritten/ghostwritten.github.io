@@ -1,0 +1,20 @@
+{
+  "id": "dev/shell/shell_比较大小",
+  "title": "shell  比较大小",
+  "description": "tags: 数学",
+  "source": "@site/docs/dev/shell/shell_比较大小.md",
+  "sourceDirName": "dev/shell",
+  "slug": "/dev/shell/shell_比较大小",
+  "permalink": "/en/docs/dev/shell/shell_比较大小",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/dev/shell/shell_比较大小.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "shellSidebar",
+  "previous": {
+    "title": "Shell 报告服务器信息",
+    "permalink": "/en/docs/dev/shell/Shell_报告服务器信息"
+  }
+}

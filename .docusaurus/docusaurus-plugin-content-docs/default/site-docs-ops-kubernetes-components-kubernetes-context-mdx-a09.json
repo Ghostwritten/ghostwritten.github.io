@@ -1,0 +1,40 @@
+{
+  "id": "ops/kubernetes/Components/Kubernetes Context Overivew",
+  "title": "Kubernetes Context Overivew",
+  "description": "Kubernetes Context 用于切换集群、用户和命名空间的配置环境，便于多集群管理。",
+  "source": "@site/docs/ops/kubernetes/Components/Kubernetes_Context.mdx",
+  "sourceDirName": "ops/kubernetes/Components",
+  "slug": "/ops/kubernetes/Components/Kubernetes Context Overivew",
+  "permalink": "/en/docs/ops/kubernetes/Components/Kubernetes Context Overivew",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/kubernetes/Components/Kubernetes_Context.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "kubernetes",
+      "permalink": "/en/docs/tags/kubernetes"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Kubernetes Context Overivew",
+    "id": "Kubernetes Context Overivew",
+    "description": "Kubernetes Context 用于切换集群、用户和命名空间的配置环境，便于多集群管理。",
+    "sidebar_position": 2,
+    "authors": "ghostwritten",
+    "tags": [
+      "kubernetes"
+    ]
+  },
+  "sidebar": "kubernetesSidebar",
+  "previous": {
+    "title": "Api-server Overiview",
+    "permalink": "/en/docs/ops/kubernetes/Components/Api-server Overiview"
+  },
+  "next": {
+    "title": "kubelet Overiview",
+    "permalink": "/en/docs/ops/kubernetes/Components/kubelet Overiview"
+  }
+}

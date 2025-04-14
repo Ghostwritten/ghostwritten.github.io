@@ -1,0 +1,24 @@
+{
+  "id": "operations/kubernetes/Kubernetes_config_配置访问多集群",
+  "title": "Kubernetes config Overivew",
+  "description": "tags: config,对象",
+  "source": "@site/docs/operations/kubernetes/Kubernetes_config_配置访问多集群.md",
+  "sourceDirName": "operations/kubernetes",
+  "slug": "/operations/kubernetes/Kubernetes_config_配置访问多集群",
+  "permalink": "/docs/operations/kubernetes/Kubernetes_config_配置访问多集群",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/operations/kubernetes/Kubernetes_config_配置访问多集群.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Kubernetes_CNI网络",
+    "permalink": "/docs/operations/kubernetes/Kubernetes_CNI网络"
+  },
+  "next": {
+    "title": "利用_iso_配置_yum源",
+    "permalink": "/docs/operations/linux/利用_iso_配置_yum源"
+  }
+}

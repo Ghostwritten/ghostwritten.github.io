@@ -1,0 +1,24 @@
+{
+  "id": "dev/python/python_logging日志处理详解",
+  "title": "python 模块 logging日志处理",
+  "description": "----",
+  "source": "@site/docs/dev/python/python_logging日志处理详解.md",
+  "sourceDirName": "dev/python",
+  "slug": "/dev/python/python_logging日志处理详解",
+  "permalink": "/docs/dev/python/python_logging日志处理详解",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/dev/python/python_logging日志处理详解.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "pythonSidebar",
+  "previous": {
+    "title": "python ljust()、center() 、rjust() 字符串填充对齐",
+    "permalink": "/docs/dev/python/python_ljust()、center()_、rjust()_字符串填充左中右对齐"
+  },
+  "next": {
+    "title": "python 模块 mysql-connector 管理数据库",
+    "permalink": "/docs/dev/python/python_mysql-connector模块连接数据库详解"
+  }
+}

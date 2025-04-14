@@ -1,0 +1,26 @@
+{
+  "id": "ops/linux/intro",
+  "title": "前言",
+  "description": "Linux 是一种开源的类 Unix 操作系统，稳定高效，广泛应用于服务器、嵌入式和开发环境中。",
+  "source": "@site/docs/ops/linux/intro.md",
+  "sourceDirName": "ops/linux",
+  "slug": "/ops/linux/intro",
+  "permalink": "/en/docs/ops/linux/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/linux/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "前言",
+    "id": "intro",
+    "description": "Linux 是一种开源的类 Unix 操作系统，稳定高效，广泛应用于服务器、嵌入式和开发环境中。",
+    "sidebar_position": 1
+  },
+  "sidebar": "linuxSidebar",
+  "next": {
+    "title": "System Resources",
+    "permalink": "/en/docs/category/system-resources"
+  }
+}

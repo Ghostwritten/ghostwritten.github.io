@@ -1,0 +1,40 @@
+{
+  "id": "ops/linux/System-Resources/Understanding_Linux_Load_Average",
+  "title": "了解平均负载和%CPU",
+  "description": "详解Linux平均负载：活跃进程数指标。教你结合核心数与工具分析高负载原因。",
+  "source": "@site/docs/ops/linux/System-Resources/Understanding_Linux_Load_Average.mdx",
+  "sourceDirName": "ops/linux/System-Resources",
+  "slug": "/ops/linux/System-Resources/Understanding_Linux_Load_Average",
+  "permalink": "/docs/ops/linux/System-Resources/Understanding_Linux_Load_Average",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/linux/System-Resources/Understanding_Linux_Load_Average.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "linux",
+      "permalink": "/docs/tags/linux"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1539502055000,
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "了解平均负载和%CPU",
+    "description": "详解Linux平均负载：活跃进程数指标。教你结合核心数与工具分析高负载原因。",
+    "sidebar_position": 2,
+    "authors": "ghostwritten",
+    "tags": [
+      "linux"
+    ]
+  },
+  "sidebar": "linuxSidebar",
+  "previous": {
+    "title": "Linux 查看系统资源指标",
+    "permalink": "/docs/ops/linux/System-Resources/Linux-View-System-Resource-Indicators"
+  },
+  "next": {
+    "title": "利用_iso_配置_yum源",
+    "permalink": "/docs/ops/linux/利用_iso_配置_yum源"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "dev/go/import_package",
+  "title": "Packages and Import in Go",
+  "description": "Go 语言通过包（package）组织代码，使用 import 引入其他包以复用函数和结构。",
+  "source": "@site/docs/dev/go/import_package.md",
+  "sourceDirName": "dev/go",
+  "slug": "/dev/go/import_package",
+  "permalink": "/en/docs/dev/go/import_package",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/dev/go/import_package.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "go",
+      "permalink": "/en/docs/tags/go"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "title": "Packages and Import in Go",
+    "id": "import_package",
+    "description": "Go 语言通过包（package）组织代码，使用 import 引入其他包以复用函数和结构。",
+    "sidebar_position": 2,
+    "authors": "ghostwritten",
+    "tags": [
+      "go"
+    ]
+  },
+  "sidebar": "goSidebar",
+  "previous": {
+    "title": "前言",
+    "permalink": "/en/docs/dev/go/intro"
+  }
+}

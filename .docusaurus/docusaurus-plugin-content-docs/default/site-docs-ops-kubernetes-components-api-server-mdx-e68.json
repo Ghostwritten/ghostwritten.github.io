@@ -1,0 +1,42 @@
+{
+  "id": "ops/kubernetes/Components/Api-server Overiview",
+  "title": "Api-server Overiview",
+  "description": "深入解析 Kubernetes 的起源、架构与未来趋势，揭示它如何重塑现代基础设施的控制逻辑。",
+  "source": "@site/docs/ops/kubernetes/Components/api-server.mdx",
+  "sourceDirName": "ops/kubernetes/Components",
+  "slug": "/ops/kubernetes/Components/Api-server Overiview",
+  "permalink": "/en/docs/ops/kubernetes/Components/Api-server Overiview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/kubernetes/Components/api-server.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "kubernetes",
+      "permalink": "/en/docs/tags/kubernetes"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Api-server Overiview",
+    "id": "Api-server Overiview",
+    "description": "深入解析 Kubernetes 的起源、架构与未来趋势，揭示它如何重塑现代基础设施的控制逻辑。",
+    "sidebar_position": 1,
+    "authors": [
+      "ghostwritten"
+    ],
+    "tags": [
+      "kubernetes"
+    ]
+  },
+  "sidebar": "kubernetesSidebar",
+  "previous": {
+    "title": "Components",
+    "permalink": "/en/docs/category/components"
+  },
+  "next": {
+    "title": "Kubernetes Context Overivew",
+    "permalink": "/en/docs/ops/kubernetes/Components/Kubernetes Context Overivew"
+  }
+}

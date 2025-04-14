@@ -1,0 +1,24 @@
+{
+  "id": "dev/python/Conda_安装_Jupyter_Notebook",
+  "title": "Conda_安装_Jupyter_Notebook",
+  "description": "在这里插入图片描述",
+  "source": "@site/docs/dev/python/Conda_安装_Jupyter_Notebook.md",
+  "sourceDirName": "dev/python",
+  "slug": "/dev/python/Conda_安装_Jupyter_Notebook",
+  "permalink": "/en/docs/dev/python/Conda_安装_Jupyter_Notebook",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/dev/python/Conda_安装_Jupyter_Notebook.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "pythonSidebar",
+  "previous": {
+    "title": "前言",
+    "permalink": "/en/docs/dev/python/intro"
+  },
+  "next": {
+    "title": "csdn_文章批量转换markdown格式下载至本地",
+    "permalink": "/en/docs/dev/python/csdn_文章批量转换markdown格式下载至本地"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "ops/kubernetes/network/Kubernetes_CNI网络",
+  "title": "Kubernetes_CNI网络",
+  "description": "参考资料：",
+  "source": "@site/docs/ops/kubernetes/network/Kubernetes_CNI网络.mdx",
+  "sourceDirName": "ops/kubernetes/network",
+  "slug": "/ops/kubernetes/network/Kubernetes_CNI网络",
+  "permalink": "/en/docs/ops/kubernetes/network/Kubernetes_CNI网络",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/kubernetes/network/Kubernetes_CNI网络.mdx",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "kubernetesSidebar",
+  "previous": {
+    "title": "kubespray offline install kubernetes",
+    "permalink": "/en/docs/ops/kubernetes/Install/kubespray offline install kubernetes"
+  }
+}

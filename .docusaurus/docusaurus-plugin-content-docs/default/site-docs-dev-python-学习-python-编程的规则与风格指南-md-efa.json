@@ -1,0 +1,24 @@
+{
+  "id": "dev/python/学习_Python_编程的规则与风格指南",
+  "title": "学习_Python_编程的规则与风格指南",
+  "description": "在这里插入图片描述",
+  "source": "@site/docs/dev/python/学习_Python_编程的规则与风格指南.md",
+  "sourceDirName": "dev/python",
+  "slug": "/dev/python/学习_Python_编程的规则与风格指南",
+  "permalink": "/en/docs/dev/python/学习_Python_编程的规则与风格指南",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/dev/python/学习_Python_编程的规则与风格指南.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "pythonSidebar",
+  "previous": {
+    "title": "学习_Python_编程的利器：高效工具与资源推荐",
+    "permalink": "/en/docs/dev/python/学习_Python_编程的利器：高效工具与资源推荐"
+  },
+  "next": {
+    "title": "学习python_web_需要的掌握技能、框架、必备工具、",
+    "permalink": "/en/docs/dev/python/学习python_web_需要的掌握技能、框架、必备工具、"
+  }
+}

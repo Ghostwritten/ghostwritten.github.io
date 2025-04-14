@@ -1,0 +1,24 @@
+{
+  "id": "dev/shell/Shell_报告服务器信息",
+  "title": "Shell 报告服务器信息",
+  "description": "tags: 监控",
+  "source": "@site/docs/dev/shell/Shell_报告服务器信息.md",
+  "sourceDirName": "dev/shell",
+  "slug": "/dev/shell/Shell_报告服务器信息",
+  "permalink": "/en/docs/dev/shell/Shell_报告服务器信息",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/dev/shell/Shell_报告服务器信息.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "shellSidebar",
+  "previous": {
+    "title": "前言",
+    "permalink": "/en/docs/dev/shell/intro"
+  },
+  "next": {
+    "title": "shell  比较大小",
+    "permalink": "/en/docs/dev/shell/shell_比较大小"
+  }
+}

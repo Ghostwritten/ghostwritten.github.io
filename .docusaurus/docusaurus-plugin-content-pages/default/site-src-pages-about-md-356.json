@@ -1,0 +1,11 @@
+{
+  "type": "mdx",
+  "permalink": "/about",
+  "source": "@site/src/pages/about.md",
+  "title": "关于本站",
+  "description": "欢迎来到 幽灵代笔！",
+  "frontMatter": {
+    "title": "关于本站"
+  },
+  "unlisted": false
+}

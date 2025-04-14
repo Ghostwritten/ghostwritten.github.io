@@ -1,0 +1,22 @@
+{
+  "id": "ops/linux/利用_iso_配置_yum源",
+  "title": "利用_iso_配置_yum源",
+  "description": "1. 虚拟机挂载 iso",
+  "source": "@site/docs/ops/linux/利用_iso_配置_yum源.md",
+  "sourceDirName": "ops/linux",
+  "slug": "/ops/linux/利用_iso_配置_yum源",
+  "permalink": "/docs/ops/linux/利用_iso_配置_yum源",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/linux/利用_iso_配置_yum源.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {},
+  "sidebar": "linuxSidebar",
+  "previous": {
+    "title": "load-average",
+    "permalink": "/docs/ops/linux/load-average"
+  }
+}

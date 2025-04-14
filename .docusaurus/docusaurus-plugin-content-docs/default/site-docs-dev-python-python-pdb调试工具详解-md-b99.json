@@ -1,0 +1,24 @@
+{
+  "id": "dev/python/python_pdb调试工具详解",
+  "title": "python 模块 pdb调试工具",
+  "description": "---",
+  "source": "@site/docs/dev/python/python_pdb调试工具详解.md",
+  "sourceDirName": "dev/python",
+  "slug": "/dev/python/python_pdb调试工具详解",
+  "permalink": "/docs/dev/python/python_pdb调试工具详解",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/dev/python/python_pdb调试工具详解.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "pythonSidebar",
+  "previous": {
+    "title": "linux python web flask 编写 Hello World",
+    "permalink": "/docs/dev/python/linux_python_web_flask_编写_Hello_World"
+  },
+  "next": {
+    "title": "python_用透_“进程、线程、协程”",
+    "permalink": "/docs/dev/python/python_用透_“进程、线程、协程”"
+  }
+}

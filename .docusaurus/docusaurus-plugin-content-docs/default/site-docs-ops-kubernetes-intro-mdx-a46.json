@@ -1,0 +1,39 @@
+{
+  "id": "ops/kubernetes/intro",
+  "title": "Kubernetes 介绍",
+  "description": "深入解析 Kubernetes 的起源、架构与未来趋势，揭示它如何重塑现代基础设施的控制逻辑。",
+  "source": "@site/docs/ops/kubernetes/intro.mdx",
+  "sourceDirName": "ops/kubernetes",
+  "slug": "/",
+  "permalink": "/docs/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/kubernetes/intro.mdx",
+  "tags": [
+    {
+      "inline": true,
+      "label": "kubernetes",
+      "permalink": "/docs/tags/kubernetes"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedAt": 1539502055000,
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "Kubernetes 介绍",
+    "id": "intro",
+    "description": "深入解析 Kubernetes 的起源、架构与未来趋势，揭示它如何重塑现代基础设施的控制逻辑。",
+    "sidebar_position": 1,
+    "slug": "/",
+    "image": "/static/img/ops/kubernetes/cover.png",
+    "authors": "ghostwritten",
+    "tags": [
+      "kubernetes"
+    ]
+  },
+  "sidebar": "kubernetesSidebar",
+  "next": {
+    "title": "Components",
+    "permalink": "/docs/category/components-1"
+  }
+}

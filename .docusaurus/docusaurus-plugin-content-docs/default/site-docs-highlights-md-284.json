@@ -1,0 +1,15 @@
+{
+  "id": "highlights",
+  "title": "highlights",
+  "description": "",
+  "source": "@site/docs/highlights.md",
+  "sourceDirName": ".",
+  "slug": "/highlights",
+  "permalink": "/en/docs/highlights",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/highlights.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {}
+}

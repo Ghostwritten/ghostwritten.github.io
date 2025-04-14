@@ -1,0 +1,35 @@
+{
+  "id": "ops/linux/Yum/Creating_a_Local_Yum_Repository_Using_an_ISO_Image",
+  "title": "ISO镜像创建本地Yum仓库",
+  "description": "使用ISO镜像创建本地Yum仓库。",
+  "source": "@site/docs/ops/linux/Yum/Creating_a_Local_Yum_Repository_Using_an_ISO_Image.md",
+  "sourceDirName": "ops/linux/Yum",
+  "slug": "/ops/linux/Yum/Creating_a_Local_Yum_Repository_Using_an_ISO_Image",
+  "permalink": "/en/docs/ops/linux/Yum/Creating_a_Local_Yum_Repository_Using_an_ISO_Image",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/linux/Yum/Creating_a_Local_Yum_Repository_Using_an_ISO_Image.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "linux",
+      "permalink": "/en/docs/tags/linux"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "ISO镜像创建本地Yum仓库",
+    "description": "使用ISO镜像创建本地Yum仓库。",
+    "sidebar_position": 3,
+    "authors": "ghostwritten",
+    "tags": [
+      "linux"
+    ]
+  },
+  "sidebar": "linuxSidebar",
+  "previous": {
+    "title": "了解平均负载和%CPU",
+    "permalink": "/en/docs/ops/linux/System-Resources/Understanding_Linux_Load_Average"
+  }
+}

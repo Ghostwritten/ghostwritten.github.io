@@ -1,0 +1,20 @@
+{
+  "id": "ops/CICD/gitlab/gitlab快速入门",
+  "title": "Github 开始入门",
+  "description": "1. 前提",
+  "source": "@site/docs/ops/CICD/gitlab/gitlab快速入门.md",
+  "sourceDirName": "ops/CICD/gitlab",
+  "slug": "/ops/CICD/gitlab/gitlab快速入门",
+  "permalink": "/en/docs/ops/CICD/gitlab/gitlab快速入门",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/CICD/gitlab/gitlab快速入门.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "CICDSidebar",
+  "previous": {
+    "title": "Gitlab 介绍",
+    "permalink": "/en/docs/ops/CICD/gitlab/gitlab_介绍"
+  }
+}

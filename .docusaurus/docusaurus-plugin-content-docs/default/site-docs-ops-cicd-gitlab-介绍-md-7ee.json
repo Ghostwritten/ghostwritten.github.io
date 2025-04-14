@@ -1,0 +1,25 @@
+{
+  "id": "ops/CICD/gitlab_介绍",
+  "title": "Gitlab 介绍",
+  "description": "1. 简介",
+  "source": "@site/docs/ops/CICD/gitlab_介绍.md",
+  "sourceDirName": "ops/CICD",
+  "slug": "/ops/CICD/gitlab_介绍",
+  "permalink": "/docs/ops/CICD/gitlab_介绍",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/CICD/gitlab_介绍.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {},
+  "sidebar": "CICDSidebar",
+  "previous": {
+    "title": "前言",
+    "permalink": "/docs/"
+  },
+  "next": {
+    "title": "Github 开始入门",
+    "permalink": "/docs/ops/CICD/gitlab快速入门"
+  }
+}

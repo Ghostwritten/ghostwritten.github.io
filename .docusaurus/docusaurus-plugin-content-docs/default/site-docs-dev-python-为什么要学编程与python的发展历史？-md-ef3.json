@@ -1,0 +1,24 @@
+{
+  "id": "dev/python/为什么要学编程与python的发展历史？",
+  "title": "为什么要学编程与python的发展历史？",
+  "description": "在这里插入图片描述",
+  "source": "@site/docs/dev/python/为什么要学编程与python的发展历史？.md",
+  "sourceDirName": "dev/python",
+  "slug": "/dev/python/为什么要学编程与python的发展历史？",
+  "permalink": "/en/docs/dev/python/为什么要学编程与python的发展历史？",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/dev/python/为什么要学编程与python的发展历史？.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "pythonSidebar",
+  "previous": {
+    "title": "linux python web flask 编写 Hello World",
+    "permalink": "/en/docs/dev/python/linux_python_web_flask_编写_Hello_World"
+  },
+  "next": {
+    "title": "使用_Jupyter_Notebook：安装与应用指南",
+    "permalink": "/en/docs/dev/python/使用_Jupyter_Notebook：安装与应用指南"
+  }
+}

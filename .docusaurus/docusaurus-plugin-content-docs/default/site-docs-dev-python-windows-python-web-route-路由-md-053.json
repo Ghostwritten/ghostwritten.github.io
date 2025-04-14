@@ -1,0 +1,24 @@
+{
+  "id": "dev/python/windows_python_web_route_路由",
+  "title": "windows python web route 路由",
+  "description": "tags: flask",
+  "source": "@site/docs/dev/python/windows_python_web_route_路由.md",
+  "sourceDirName": "dev/python",
+  "slug": "/dev/python/windows_python_web_route_路由",
+  "permalink": "/docs/dev/python/windows_python_web_route_路由",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/dev/python/windows_python_web_route_路由.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "pythonSidebar",
+  "previous": {
+    "title": "windows python web flask获取请求参数数据",
+    "permalink": "/docs/dev/python/windows_python_web_flask获取请求参数数据"
+  },
+  "next": {
+    "title": "为什么要学编程与python的发展历史？",
+    "permalink": "/docs/dev/python/为什么要学编程与python的发展历史？"
+  }
+}

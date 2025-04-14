@@ -1,0 +1,37 @@
+{
+  "id": "dev/shell/intro",
+  "title": "前言",
+  "description": "Shell 是连接用户与操作系统的桥梁，轻巧高效，擅长脚本自动化与系统管理。。",
+  "source": "@site/docs/dev/shell/intro.md",
+  "sourceDirName": "dev/shell",
+  "slug": "/dev/shell/intro",
+  "permalink": "/en/docs/dev/shell/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/dev/shell/intro.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "shell",
+      "permalink": "/en/docs/tags/shell"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "前言",
+    "id": "intro",
+    "description": "Shell 是连接用户与操作系统的桥梁，轻巧高效，擅长脚本自动化与系统管理。。",
+    "sidebar_position": 1,
+    "image": "/static/img/dev/shell/cover.png",
+    "authors": "ghostwritten",
+    "tags": [
+      "shell"
+    ]
+  },
+  "sidebar": "shellSidebar",
+  "next": {
+    "title": "Shell 报告服务器信息",
+    "permalink": "/en/docs/dev/shell/Shell_报告服务器信息"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "ops/linux/System-Resources/查看_cpu、内存、磁盘相关指标",
+  "title": "查看_cpu、内存、磁盘相关指标",
+  "description": "1. top查看cpu最高",
+  "source": "@site/docs/ops/linux/System-Resources/查看_cpu、内存、磁盘相关指标.md",
+  "sourceDirName": "ops/linux/System-Resources",
+  "slug": "/ops/linux/System-Resources/查看_cpu、内存、磁盘相关指标",
+  "permalink": "/docs/ops/linux/System-Resources/查看_cpu、内存、磁盘相关指标",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/linux/System-Resources/查看_cpu、内存、磁盘相关指标.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {},
+  "sidebar": "linuxSidebar",
+  "previous": {
+    "title": "system-load",
+    "permalink": "/docs/ops/linux/System-Resources/system-load"
+  },
+  "next": {
+    "title": "利用_iso_配置_yum源",
+    "permalink": "/docs/ops/linux/利用_iso_配置_yum源"
+  }
+}

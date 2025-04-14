@@ -1,0 +1,20 @@
+{
+  "id": "operations/linux/查看_cpu、内存、磁盘相关指标",
+  "title": "查看_cpu、内存、磁盘相关指标",
+  "description": "1. top查看cpu最高",
+  "source": "@site/docs/operations/linux/查看_cpu、内存、磁盘相关指标.md",
+  "sourceDirName": "operations/linux",
+  "slug": "/operations/linux/查看_cpu、内存、磁盘相关指标",
+  "permalink": "/docs/operations/linux/查看_cpu、内存、磁盘相关指标",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/operations/linux/查看_cpu、内存、磁盘相关指标.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "利用_iso_配置_yum源",
+    "permalink": "/docs/operations/linux/利用_iso_配置_yum源"
+  }
+}

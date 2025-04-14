@@ -1,0 +1,64 @@
+{
+  "permalink": "/en/blog/welcome",
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/blog/2021-08-26-welcome/index.md",
+  "source": "@site/blog/2021-08-26-welcome/index.md",
+  "title": "Welcome",
+  "description": "Docusaurus blogging features are powered by the blog plugin.",
+  "date": "2021-08-26T00:00:00.000Z",
+  "tags": [
+    {
+      "inline": false,
+      "label": "Facebook",
+      "permalink": "/en/blog/tags/facebook",
+      "description": "Facebook tag description"
+    },
+    {
+      "inline": false,
+      "label": "Hello",
+      "permalink": "/en/blog/tags/hello",
+      "description": "Hello tag description"
+    },
+    {
+      "inline": false,
+      "label": "Docusaurus",
+      "permalink": "/en/blog/tags/docusaurus",
+      "description": "Docusaurus tag description"
+    }
+  ],
+  "readingTime": 0.465,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "ghostwritten",
+      "title": "ghostwritten maintainer",
+      "url": "https://ghostwritten.github.io",
+      "page": {
+        "permalink": "/en/blog/authors/all-sebastien-lorber-articles"
+      },
+      "ghostwritten": {
+        "x": "cnghostwritten",
+        "github": "ghostwritten",
+        "newsletter": "https://ghostwritten.github.io"
+      },
+      "imageURL": "https://github.com/Ghostwritten/images/blob/main/2.jpg",
+      "key": "ghostwritten"
+    }
+  ],
+  "frontMatter": {
+    "slug": "welcome",
+    "title": "Welcome",
+    "authors": [
+      "ghostwritten"
+    ],
+    "tags": [
+      "facebook",
+      "hello",
+      "docusaurus"
+    ]
+  },
+  "unlisted": false,
+  "nextItem": {
+    "title": "MDX Blog Post",
+    "permalink": "/en/blog/mdx-blog-post"
+  }
+}

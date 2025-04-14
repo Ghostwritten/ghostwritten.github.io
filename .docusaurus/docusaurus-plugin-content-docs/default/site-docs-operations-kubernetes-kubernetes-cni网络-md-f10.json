@@ -1,0 +1,24 @@
+{
+  "id": "operations/kubernetes/Kubernetes_CNI网络",
+  "title": "Kubernetes_CNI网络",
+  "description": "参考资料：",
+  "source": "@site/docs/operations/kubernetes/Kubernetes_CNI网络.md",
+  "sourceDirName": "operations/kubernetes",
+  "slug": "/operations/kubernetes/Kubernetes_CNI网络",
+  "permalink": "/docs/operations/kubernetes/Kubernetes_CNI网络",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/operations/kubernetes/Kubernetes_CNI网络.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Translate your site",
+    "permalink": "/docs/tutorial-extras/translate-your-site"
+  },
+  "next": {
+    "title": "Kubernetes config Overivew",
+    "permalink": "/docs/operations/kubernetes/Kubernetes_config_配置访问多集群"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "dev/python/python_venv_环境隔离",
+  "title": "python_venv_环境隔离",
+  "description": "1. 介绍",
+  "source": "@site/docs/dev/python/python_venv_环境隔离.md",
+  "sourceDirName": "dev/python",
+  "slug": "/dev/python/python_venv_环境隔离",
+  "permalink": "/docs/dev/python/python_venv_环境隔离",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/dev/python/python_venv_环境隔离.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "pythonSidebar",
+  "previous": {
+    "title": "python_uuid详解",
+    "permalink": "/docs/dev/python/python_uuid详解"
+  },
+  "next": {
+    "title": "python yield 生成器",
+    "permalink": "/docs/dev/python/python_yield_用法详解"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "prd/apple/如何在_Mac_上彻底卸载_DMG_软件",
+  "title": "如何在_Mac_上彻底卸载_DMG_软件",
+  "description": "在这里插入图片描述",
+  "source": "@site/docs/prd/apple/如何在_Mac_上彻底卸载_DMG_软件.md",
+  "sourceDirName": "prd/apple",
+  "slug": "/prd/apple/如何在_Mac_上彻底卸载_DMG_软件",
+  "permalink": "/en/docs/prd/apple/如何在_Mac_上彻底卸载_DMG_软件",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/prd/apple/如何在_Mac_上彻底卸载_DMG_软件.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "prdSidebar",
+  "previous": {
+    "title": "前言",
+    "permalink": "/en/docs/prd/intro"
+  },
+  "next": {
+    "title": "如何在_macOS_美化_iterm2_？",
+    "permalink": "/en/docs/prd/apple/如何在_macOS_美化_iterm2_？"
+  }
+}

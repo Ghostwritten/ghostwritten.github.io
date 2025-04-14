@@ -1,0 +1,24 @@
+{
+  "id": "prd/vscode/VSCODE_插件推荐",
+  "title": "VSCODE_插件推荐",
+  "description": "在这里插入图片描述",
+  "source": "@site/docs/prd/vscode/VSCODE_插件推荐.md",
+  "sourceDirName": "prd/vscode",
+  "slug": "/prd/vscode/VSCODE_插件推荐",
+  "permalink": "/en/docs/prd/vscode/VSCODE_插件推荐",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/prd/vscode/VSCODE_插件推荐.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "prdSidebar",
+  "previous": {
+    "title": "如何在_macOS_美化_iterm2_？",
+    "permalink": "/en/docs/prd/apple/如何在_macOS_美化_iterm2_？"
+  },
+  "next": {
+    "title": "vscode_插件_codegeex_自动代码生成器",
+    "permalink": "/en/docs/prd/vscode/vscode_插件_codegeex_自动代码生成器"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "ops/kubernetes/Kubernetes_CNI网络",
+  "title": "Kubernetes_CNI网络",
+  "description": "参考资料：",
+  "source": "@site/docs/ops/kubernetes/Kubernetes_CNI网络.mdx",
+  "sourceDirName": "ops/kubernetes",
+  "slug": "/ops/kubernetes/Kubernetes_CNI网络",
+  "permalink": "/docs/ops/kubernetes/Kubernetes_CNI网络",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/kubernetes/Kubernetes_CNI网络.mdx",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {},
+  "sidebar": "kubernetesSidebar",
+  "previous": {
+    "title": "kubespray offline install kubernetes",
+    "permalink": "/docs/ops/kubernetes/Install/kubespray offline install kubernetes"
+  },
+  "next": {
+    "title": "Kubernetes config Overivew",
+    "permalink": "/docs/ops/kubernetes/Kubernetes_config_配置访问多集群"
+  }
+}

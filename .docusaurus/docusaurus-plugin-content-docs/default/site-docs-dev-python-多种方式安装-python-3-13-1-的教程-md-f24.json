@@ -1,0 +1,24 @@
+{
+  "id": "dev/python/多种方式安装_Python_3.13.1_的教程",
+  "title": "多种方式安装_Python_3.13.1_的教程",
+  "description": "在这里插入图片描述",
+  "source": "@site/docs/dev/python/多种方式安装_Python_3.13.1_的教程.md",
+  "sourceDirName": "dev/python",
+  "slug": "/dev/python/多种方式安装_Python_3.13.1_的教程",
+  "permalink": "/en/docs/dev/python/多种方式安装_Python_3.13.1_的教程",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/dev/python/多种方式安装_Python_3.13.1_的教程.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "pythonSidebar",
+  "previous": {
+    "title": "初识_Conda：一站式包管理和环境管理工具",
+    "permalink": "/en/docs/dev/python/初识_Conda：一站式包管理和环境管理工具"
+  },
+  "next": {
+    "title": "如何通过_Python_与_ChatGPT_对话",
+    "permalink": "/en/docs/dev/python/如何通过_Python_与_ChatGPT_对话"
+  }
+}

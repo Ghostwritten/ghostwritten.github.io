@@ -1,0 +1,37 @@
+{
+  "id": "dev/go/intro",
+  "title": "前言",
+  "description": "Go语言由谷歌三位大师创造，以简洁高效和强大并发支持闻名，成为云计算时代的利器。",
+  "source": "@site/docs/dev/go/intro.md",
+  "sourceDirName": "dev/go",
+  "slug": "/dev/go/intro",
+  "permalink": "/en/docs/dev/go/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/dev/go/intro.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "go",
+      "permalink": "/en/docs/tags/go"
+    }
+  ],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "title": "前言",
+    "id": "intro",
+    "description": "Go语言由谷歌三位大师创造，以简洁高效和强大并发支持闻名，成为云计算时代的利器。",
+    "sidebar_position": 1,
+    "image": "/static/img/dev/go/cover.png",
+    "authors": "ghostwritten",
+    "tags": [
+      "go"
+    ]
+  },
+  "sidebar": "goSidebar",
+  "next": {
+    "title": "Packages and Import in Go",
+    "permalink": "/en/docs/dev/go/import_package"
+  }
+}

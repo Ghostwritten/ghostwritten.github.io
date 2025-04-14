@@ -1,0 +1,20 @@
+{
+  "id": "kubernetes/Kubernetes_config_配置访问多集群",
+  "title": "Kubernetes config Overivew",
+  "description": "tags: config,对象",
+  "source": "@site/docs/kubernetes/Kubernetes_config_配置访问多集群.md",
+  "sourceDirName": "kubernetes",
+  "slug": "/kubernetes/Kubernetes_config_配置访问多集群",
+  "permalink": "/docs/kubernetes/Kubernetes_config_配置访问多集群",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/kubernetes/Kubernetes_config_配置访问多集群.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "kubernetesSidebar",
+  "previous": {
+    "title": "Kubernetes_CNI网络",
+    "permalink": "/docs/kubernetes/Kubernetes_CNI网络"
+  }
+}

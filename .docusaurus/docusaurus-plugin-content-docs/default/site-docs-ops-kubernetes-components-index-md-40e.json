@@ -1,0 +1,26 @@
+{
+  "id": "ops/kubernetes/Components/index",
+  "title": "index",
+  "description": "",
+  "source": "@site/docs/ops/kubernetes/Components/index.md",
+  "sourceDirName": "ops/kubernetes/Components",
+  "slug": "/ops/kubernetes/Components/",
+  "permalink": "/docs/ops/kubernetes/Components/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/kubernetes/Components/index.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "frontMatter": {},
+  "sidebar": "kubernetesSidebar",
+  "previous": {
+    "title": "Kubernetes 介绍",
+    "permalink": "/docs/"
+  },
+  "next": {
+    "title": "Api-server Overiview",
+    "permalink": "/docs/ops/kubernetes/Components/Api-server Overiview"
+  }
+}

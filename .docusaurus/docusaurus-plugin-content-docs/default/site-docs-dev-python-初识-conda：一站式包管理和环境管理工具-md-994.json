@@ -1,0 +1,24 @@
+{
+  "id": "dev/python/初识_Conda：一站式包管理和环境管理工具",
+  "title": "初识_Conda：一站式包管理和环境管理工具",
+  "description": "在这里插入图片描述",
+  "source": "@site/docs/dev/python/初识_Conda：一站式包管理和环境管理工具.md",
+  "sourceDirName": "dev/python",
+  "slug": "/dev/python/初识_Conda：一站式包管理和环境管理工具",
+  "permalink": "/en/docs/dev/python/初识_Conda：一站式包管理和环境管理工具",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/dev/python/初识_Conda：一站式包管理和环境管理工具.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "pythonSidebar",
+  "previous": {
+    "title": "使用_Jupyter_Notebook：安装与应用指南",
+    "permalink": "/en/docs/dev/python/使用_Jupyter_Notebook：安装与应用指南"
+  },
+  "next": {
+    "title": "多种方式安装_Python_3.13.1_的教程",
+    "permalink": "/en/docs/dev/python/多种方式安装_Python_3.13.1_的教程"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "ops/linux/Creating_a_Local_Yum_Repository_Using_an_ISO_Image",
+  "title": "ISO镜像创建本地Yum仓库",
+  "description": "使用ISO镜像创建本地Yum仓库。",
+  "source": "@site/docs/ops/linux/Creating_a_Local_Yum_Repository_Using_an_ISO_Image.md",
+  "sourceDirName": "ops/linux",
+  "slug": "/ops/linux/Creating_a_Local_Yum_Repository_Using_an_ISO_Image",
+  "permalink": "/docs/ops/linux/Creating_a_Local_Yum_Repository_Using_an_ISO_Image",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/ops/linux/Creating_a_Local_Yum_Repository_Using_an_ISO_Image.md",
+  "tags": [
+    {
+      "inline": true,
+      "label": "linux",
+      "permalink": "/docs/tags/linux"
+    }
+  ],
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055000,
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "title": "ISO镜像创建本地Yum仓库",
+    "description": "使用ISO镜像创建本地Yum仓库。",
+    "sidebar_position": 3,
+    "authors": "ghostwritten",
+    "tags": [
+      "linux"
+    ]
+  },
+  "sidebar": "linuxSidebar",
+  "previous": {
+    "title": "前言",
+    "permalink": "/docs/ops/linux/intro"
+  },
+  "next": {
+    "title": "Linux 查看系统资源指标",
+    "permalink": "/docs/ops/linux/System-Resources/Linux-View-System-Resource-Indicators"
+  }
+}

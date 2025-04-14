@@ -1,0 +1,22 @@
+{
+  "id": "intro",
+  "title": "前言",
+  "description": "快速了解本站内容分类及亮点。",
+  "source": "@site/docs/intro.md",
+  "sourceDirName": ".",
+  "slug": "/intro",
+  "permalink": "/en/docs/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/docs/intro.md",
+  "tags": [],
+  "version": "current",
+  "lastUpdatedAt": 1743672337000,
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "id": "intro",
+    "title": "前言",
+    "description": "快速了解本站内容分类及亮点。",
+    "sidebar_position": 1
+  }
+}
