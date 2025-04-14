@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkghostwritten_github_io=self.webpackChunkghostwritten_github_io||[]).push([[1809],{1809:(t,e,h)=>{h.r(e)}}]);

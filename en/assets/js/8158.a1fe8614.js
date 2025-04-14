@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkghostwritten_github_io=self.webpackChunkghostwritten_github_io||[]).push([[8158],{8158:(t,e,h)=>{h.r(e),h.d(e,{DocSearchModal:()=>i.a1});var i=h(5600)}}]);
