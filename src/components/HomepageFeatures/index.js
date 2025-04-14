@@ -4,47 +4,79 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Linux',
+    Svg: require('@site/static/img/linux.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        探索 Linux 的强大功能，了解如何使用它来管理服务器和开发环境
       </>
     ),
+    link: '/docs/ops/linux/intro', // 确保路径与文档路径一致
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Kubernetes',
+    Svg: require('@site/static/img/kubernetes.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        学习 Kubernetes 的核心概念，掌握容器编排的最佳实践
       </>
     ),
+    link: '/docs/ops/kubernetes/intro', // 确保路径与文档路径一致
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'CI/CD',
+    Svg: require('@site/static/img/CICD.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        了解 CI/CD 的工作流程，提升开发效率，实现自动化部署
       </>
     ),
+    link: '/docs/ops/CICD/intro', // 确保路径与文档路径一致
+  },
+  {
+    title: 'Shell',
+    Svg: require('@site/static/img/shell.svg').default,
+    description: (
+      <>
+        探索 Shell 的强大能力，掌握脚本语言驾驭系统与自动化的艺术
+      </>
+    ),
+    link: '/docs/dev/shell/intro', // 确保路径与文档路径一致
+  },
+  {
+    title: 'Python',
+    Svg: require('@site/static/img/python.svg').default,
+    description: (
+      <>
+        学习 Kubernetes 的核心概念，掌握容器编排的最佳实践
+      </>
+    ),
+    link: '/docs/dev/python/intro', // 确保路径与文档路径一致
+  },
+  {
+    title: 'Go',
+    Svg: require('@site/static/img/go.svg').default,
+    description: (
+      <>
+        Go语言由谷歌开发，语法简洁、并发强大，适合构建高性能网络服务与分布式系统
+      </>
+    ),
+    link: '/docs/dev/go/intro', // 确保路径与文档路径一致
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({Svg, title, description, link}) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
-      </div>
+      <a href={link} className={styles.card}>
+        <div className="text--center">
+          <Svg className={styles.featureSvg} role="img" />
+        </div>
+        <div className="text--center padding-horiz--md">
+          <Heading as="h3" className={styles.cardTitle}>{title}</Heading>
+          <p className={styles.cardDescription}>{description}</p>
+        </div>
+      </a>
     </div>
   );
 }

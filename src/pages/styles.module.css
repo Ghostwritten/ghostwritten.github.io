@@ -1,0 +1,142 @@
+/* src/pages/styles.module.css */
+
+/* --- Hero Banner --- */
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  min-height: 60vh; /* 增加高度以适配内容 */
+  display: flex;
+  flex-direction: column; /* 确保内容垂直居中 */
+  align-items: center;
+  justify-content: center;
+
+  /* 背景图片样式 */
+  background-image: url('/img/background.jpg'); /* 确保路径正确 */
+  background-size: cover; /* 填充背景 */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #eef1f4; /* 备用背景色 */
+
+  /* 移除或减少叠加层透明效果 */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1); /* 减少透明度，或设置为 0 完全移除 */
+    z-index: 1;
+  }
+
+  margin-bottom: 4rem;
+}
+
+.heroContainer {
+  position: relative;
+  z-index: 2; /* 确保内容在叠加层之上 */
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+/* --- Motto 样式 --- */
+.heroMotto {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* 类似苹果的字体 */
+  font-size: 3rem; /* 调整字体大小 */
+  font-weight: 300; /* 使用较轻的字体 */
+  color: #ffffff; /* 白色文字 */
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.6); /* 添加文字阴影以提高可读性 */
+  margin-bottom: 1.5rem; /* 与下方标题的间距 */
+  line-height: 1.4; /* 增加行高以提升可读性 */
+  letter-spacing: 0.05em; /* 增加字母间距 */
+  position: relative;
+  z-index: 3; /* 确保文字在叠加层之上 */
+  display: inline-block; /* 使文字居中 */
+  background: linear-gradient(135deg, #ffffff, #d4d4d4); /* 渐变文字效果 */
+  -webkit-background-clip: text; /* 仅剪裁文字部分 */
+  -webkit-text-fill-color: transparent; /* 使背景填充文字 */
+}
+
+/* --- 微调标题和副标题 --- */
+.heroTitle {
+  color: white !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  margin-bottom: 0.75rem;
+}
+
+.heroSubtitle {
+  color: #eee !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  margin-bottom: 1.5rem;
+}
+
+.heroButton {
+  margin-top: 1.5rem;
+}
+
+/* --- 动画样式 (保持不变) --- */
+.animatedSection {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animatedSection.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Features Section --- */
+.featuresSection {
+  padding: 6rem 0; /* 增加上下留白 */
+}
+
+/* --- Responsive Adjustments --- */
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 4rem 0;
+  }
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  .heroSubtitle {
+    font-size: 1.1rem;
+  }
+  .featuresSection,
+  .anotherSection { /* 应用到所有 section */
+      padding: 3rem 0;
+  }
+  .sectionTitle {
+      font-size: 2rem;
+  }
+  .sectionSubtitle {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .buttons {
+    flex-direction: column; /* 小屏幕按钮垂直排列 */
+    gap: 0.8rem;
+  }
+  .heroButton {
+      width: 80%; /* 让按钮宽度更大 */
+  }
+  .heroBanner {
+    min-height: 50vh; /* 减小高度以适配小屏幕 */
+    background-size: cover; /* 小屏幕改为 cover 填充背景 */
+    margin-bottom: 3rem; /* 小屏幕下减少间距 */
+  }
+  .featuresSection {
+    padding: 4rem 0; /* 小屏幕下减少上下留白 */
+  }
+  .heroMotto {
+    font-size: 2rem; /* 小屏幕下缩小字体 */
+  }
+}

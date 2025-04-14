@@ -1,0 +1,99 @@
+/* src/pages/styles.module.css (或者你为首页定义的其他 CSS 模块文件) */
+
+/* ... 你已有的其他样式 ... */
+
+.heroBanner {
+  padding: 6rem 0; /* 增加上下内边距给背景图空间，可调整 */
+  text-align: center;
+  position: relative; /* 必须，为伪元素叠加层定位 */
+  overflow: hidden; /* 防止背景意外溢出 */
+  color: white; /* 默认文字颜色改为白色，提高对比度 */
+  min-height: 60vh; /* 设置一个最小高度，让背景图可见，可调整 */
+  display: flex; /* 使用 Flexbox 方便垂直居中 */
+  align-items: center; /* 垂直居中内容 */
+  justify-content: center; /* 水平居中内容 */
+
+  /* --- 背景图片核心样式 --- */
+  /* 确保这里的路径指向你在 static/img/ 下优化后的图片 */
+  background-image: url('/img/background.png');
+  background-size: cover; /* 让背景图缩放以完全覆盖容器，可能会裁剪 */
+  background-position: center center; /* 将背景图居中显示 */
+  background-repeat: no-repeat; /* 背景图不重复平铺 */
+  background-color: #2b3137; /* 图片加载失败或加载时的备用背景色 */
+
+  /* --- 添加一个半透明叠加层，让文字更清晰 --- */
+  &::before {
+    content: ''; /* 伪元素必须 */
+    position: absolute; /* 绝对定位，相对于 .heroBanner */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* 半透明黑色叠加层，0.4 是透明度，可调整 (0 到 1) */
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1; /* 确保叠加层在背景图之上，内容之下 */
+  }
+}
+
+.heroContainer {
+  position: relative; /* 必须，确保内容在叠加层之上 */
+  z-index: 2; /* 层级高于 ::before 伪元素 */
+  max-width: 960px; /* 限制内容最大宽度，提高可读性 */
+  margin: 0 auto; /* 水平居中 */
+  padding: 0 1rem; /* 左右加一点内边距 */
+}
+
+/* 强制修改标题和副标题颜色，确保在深色背景和叠加层上可见 */
+.heroTitle {
+  color: white !important; /* 使用 !important 确保覆盖默认样式 */
+  font-weight: bold;
+  /* 添加文字阴影增加可读性 */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.heroSubtitle {
+  color: #f5f5f5 !important; /* 比标题稍暗的白色 */
+   /* 添加文字阴影增加可读性 */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.heroButton {
+  margin-top: 1.5rem; /* 给按钮上方一些空间 */
+  /* 可以根据需要调整按钮颜色以适应背景 */
+  /* 例如: border-color: white; color: white; */
+}
+
+
+/* --- 保留你的动画样式 --- */
+.animatedSection {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animatedSection.isVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 其他区域的样式 --- */
+.mainContent {
+  /* 根据需要添加全局内边距 */
+}
+
+.featuresSection {
+  padding: 4rem 0;
+}
+
+.sectionTitle {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+
+.sectionSubtitle {
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+/* ... 你其他的样式 ... */

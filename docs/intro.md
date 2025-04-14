@@ -1,47 +1,30 @@
 ---
+id: intro
+title: 前言
+description: 快速了解本站内容分类及亮点。
 sidebar_position: 1
 ---
+# 探索指南
 
-# Tutorial Intro
+欢迎来到 **幽灵代笔**！以下是本站的主要内容分类：
 
-Let's discover **Docusaurus in less than 5 minutes**.
+## 运维
 
-## Getting Started
+- [Linux](ops/linux/intro)
+- [Kubernetes](ops/kubernetes/intro)
+- [CI/CD](ops/CICD/intro)
 
-Get started by **creating a new site**.
+## 开发
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+- [Shell](dev/shell/intro)
+- [Python](dev/python/intro)
 
-### What you'll need
+## 生产力
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+- [Apple](prd/apple/intro)
+- [VSCode]prd/vscode/intro)
 
-## Generate a new site
+## 生活
 
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+- [旅行](life/travel/intro)
+- [电影](life/movies/intro)

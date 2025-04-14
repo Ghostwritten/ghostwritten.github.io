@@ -25,15 +25,32 @@ const config = {
   organizationName: 'ghostwritten', // Usually your GitHub org/user name.
   projectName: 'ghostwritten.github.io', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
+  deploymentBranch: 'gh-pages',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
-  i18n: {
+ 
+ /* i18n: {
     defaultLocale: 'en',
     locales: ['en'],
+  },*/
+
+  i18n: {
+    defaultLocale: 'zh',  // 默认语言设置为中文
+    locales: ['zh', 'en'],  // 支持中文和英文
+    localeConfigs: {
+      en: {
+        label: 'English',
+        direction: 'ltr',
+      },
+      zh: {
+        label: '中文',
+        direction: 'ltr',
+      },
+    },
   },
 
   presets: [
@@ -42,11 +59,14 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: './sidebars.js',
+          routeBasePath: 'docs', // 确保基础路径为 'docs'
+          sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/Ghostwritten/ghostwritten.github.io/edit/main/',
+          lastVersion: 'current',
+          showLastUpdateTime: true,
+
         },
         blog: {
           showReadingTime: true,
@@ -75,20 +95,47 @@ const config = {
     ({
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
+      algolia: {
+        appId: 'LNV45EYH28', // 替换为你从 Algolia 获取的 App ID
+        apiKey: 'e2241e5e41c12a7740e4c950b0325368', // 替换为你从 Algolia 获取的 Search-Only API Key
+        indexName: 'ghostwritten', // 替换为你的索引名称
+        contextualSearch: true,
+        searchParameters: {},
+        searchPagePath: 'search', // 如果你想启用独立搜索页面
+      },
       navbar: {
         title: '幽灵代笔',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: '幽灵代笔 Logo',
+          src: 'img/favicon.ico', // 更新为新的 logo
+          width: 32, // 确保大小符合原本样式
+          height: 32,
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: '运维',
+            items: [
+              { type: 'docSidebar', sidebarId: 'linuxSidebar', label: 'Linux' },
+              { type: 'docSidebar', sidebarId: 'kubernetesSidebar', label: 'Kubernetes' },
+              { type: 'docSidebar', sidebarId: 'CICDSidebar', label: 'CICD' },
+            ],
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            position: 'left',
+            label: '开发',
+            items: [
+              { type: 'docSidebar', sidebarId: 'shellSidebar', label: 'Shell' },
+              { type: 'docSidebar', sidebarId: 'pythonSidebar', label: 'Python' },
+            ],
+          },
+          {
+            position: 'left',
+            label: '生产力',
+            type: 'docSidebar', 
+            sidebarId: 'prdSidebar',
+          },
+          {to: '/blog', label: '生活', position: 'left'},
           {
             href: 'https://github.com/Ghostwritten/ghostwritten.github.io',
             label: 'GitHub',
@@ -103,8 +150,8 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: 'Linux',
+                to: '/docs/ops/linux/intro',
               },
             ],
           },
