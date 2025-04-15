@@ -4,32 +4,91 @@
         <title>幽灵代笔 Blog</title>
         <link>https://ghostwritten.github.io/blog</link>
         <description>幽灵代笔 Blog</description>
-        <lastBuildDate>Thu, 26 Aug 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 15 Apr 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>zh</language>
         <item>
-            <title><![CDATA[Welcome]]></title>
-            <link>https://ghostwritten.github.io/blog/welcome</link>
-            <guid>https://ghostwritten.github.io/blog/welcome</guid>
-            <pubDate>Thu, 26 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Docusaurus blogging features are powered by the blog plugin.]]></description>
-            <content:encoded><![CDATA[<p><a href="https://docusaurus.io/docs/blog" target="_blank" rel="noopener noreferrer">Docusaurus blogging features</a> are powered by the <a href="https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog" target="_blank" rel="noopener noreferrer">blog plugin</a>.</p>
-<p>Here are a few tips you might find useful.</p>
-<p>Simply add Markdown files (or folders) to the <code>blog</code> directory.</p>
-<p>Regular blog authors can be added to <code>authors.yml</code>.</p>
-<p>The blog post date can be extracted from filenames, such as:</p>
+            <title><![CDATA[About Me]]></title>
+            <link>https://ghostwritten.github.io/blog/About-Me</link>
+            <guid>https://ghostwritten.github.io/blog/About-Me</guid>
+            <pubDate>Tue, 15 Apr 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[👋 你好]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-你好">👋 你好<a href="https://ghostwritten.github.io/blog/About-Me#-%E4%BD%A0%E5%A5%BD" class="hash-link" aria-label="👋 你好的直接链接" title="👋 你好的直接链接">​</a></h2>
+<p>欢迎来到我的技术世界！我是Ghostwritten，一名痴迷于云原生技术栈的DevOps工程师和技术博主。如果你正在阅读这段文字，那么我们大概已经在这个由代码和创意构成的宇宙中相遇了。</p>
+<p>作为一个终身学习者，我将这个博客（<a href="https://ghostwritten.github.io/" target="_blank" rel="noopener noreferrer">https://ghostwritten.github.io/</a>）视为我技术航行的日志本，记录着我在技术海洋中发现的每一处值得分享的风景。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-我的背景">👨‍💻 我的背景<a href="https://ghostwritten.github.io/blog/About-Me#-%E6%88%91%E7%9A%84%E8%83%8C%E6%99%AF" class="hash-link" aria-label="👨‍💻 我的背景的直接链接" title="👨‍💻 我的背景的直接链接">​</a></h2>
+<p>我的技术旅程始于对计算机基础的好奇，尽管我的大学专业是中药学，但在毕业之后直接从事了计算机领域方面的工作，主要从事于云计算、容器技术和自动化运维等领域。多年来，我逐渐形成了自己的技术栈：</p>
 <ul>
-<li><code>2019-05-30-welcome.md</code></li>
-<li><code>2019-05-30-welcome/index.md</code></li>
+<li><strong>容器与编排</strong>：Docker、Kubernetes成为我日常工作的核心工具，我热衷于探索它们的最佳实践和实现细节</li>
+<li><strong>云原生生态</strong>：从Prometheus到Istio，从Helm到ArgoCD，这些工具构成了我的技术调色板</li>
+<li><strong>基础设施即代码</strong>：Terraform、Ansible等工具帮助我将基础设施管理变为可重复、可版本控制的过程</li>
+<li><strong>脚本与编程语言</strong>：Shell、Python、Go是我最常用的语言，我相信掌握适合的工具对解决问题至关重要</li>
 </ul>
-<p>A blog post folder can be convenient to co-locate blog post images:</p>
-<p><img decoding="async" loading="lazy" alt="Docusaurus Plushie" src="https://ghostwritten.github.io/assets/images/docusaurus-plushie-banner-a60f7593abca1e3eef26a9afa244e4fb.jpeg" width="1500" height="500" class="img_ev3q"></p>
-<p>The blog supports tags as well!</p>
-<p><strong>And if you don't want a blog</strong>: just delete this directory, and use <code>blog: false</code> in your Docusaurus config.</p>]]></content:encoded>
-            <category>Facebook</category>
-            <category>Hello</category>
-            <category>Docusaurus</category>
+<p>在这些领域的探索过程中，我深刻体会到了开源社区的力量。这也是我创建博客的初衷之一：回馈社区，分享知识。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="️-为什么写博客">✍️ 为什么写博客？<a href="https://ghostwritten.github.io/blog/About-Me#%EF%B8%8F-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%99%E5%8D%9A%E5%AE%A2" class="hash-link" aria-label="✍️ 为什么写博客？的直接链接" title="✍️ 为什么写博客？的直接链接">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="更深的理解来自写作">更深的理解，来自写作<a href="https://ghostwritten.github.io/blog/About-Me#%E6%9B%B4%E6%B7%B1%E7%9A%84%E7%90%86%E8%A7%A3%E6%9D%A5%E8%87%AA%E5%86%99%E4%BD%9C" class="hash-link" aria-label="更深的理解，来自写作的直接链接" title="更深的理解，来自写作的直接链接">​</a></h3>
+<p>为什么写博客？对我而言，这不仅是一种分享，更是一种学习方法。正如费曼所说："如果你不能简单地解释它，你可能并没有真正理解它。"当你能把一个知识点讲明白，或者用自己的语言重新解释，它才真正属于你。</p>
+<p>很多人看了很多视频、教程，觉得“我懂了”。可当他需要写一段代码，或者向别人解释，却发现什么都说不清楚。这种“错觉的掌握”只有写作能打破。</p>
+<p>所以，我写博客，不是为了告诉别人我懂什么，而是为了问自己一句：</p>
+<blockquote>
+<p>你真的懂了吗？</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="留给未来的自己">留给未来的自己<a href="https://ghostwritten.github.io/blog/About-Me#%E7%95%99%E7%BB%99%E6%9C%AA%E6%9D%A5%E7%9A%84%E8%87%AA%E5%B7%B1" class="hash-link" aria-label="留给未来的自己的直接链接" title="留给未来的自己的直接链接">​</a></h3>
+<p>过去的我，习惯把笔记写在各种地方：本地 Markdown 文件、印象笔记、OneNote、Typora……</p>
+<p>可几年后回头一看，零散又难以检索。</p>
+<p>现在，我把这片博客当作我的技术“备忘录”和“成长日志”。或许某天，我遇到了曾经解决过的问题，回头看看这篇博客，能对自己说：</p>
+<blockquote>
+<p>啊哈，那时我还写过这个呢！</p>
+</blockquote>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="给他人一点参考">给他人一点参考<a href="https://ghostwritten.github.io/blog/About-Me#%E7%BB%99%E4%BB%96%E4%BA%BA%E4%B8%80%E7%82%B9%E5%8F%82%E8%80%83" class="hash-link" aria-label="给他人一点参考的直接链接" title="给他人一点参考的直接链接">​</a></h3>
+<p>互联网让我学到了无数好文章、好经验。能从一个陌生网友的技术博客中找到灵感，解决问题，是一件非常温暖的事。</p>
+<p>如果将来，我写的某篇文章，也刚好能帮到某位在深夜调 bug 的开发者，那就很值得。</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-我会在这里写些什么">💡 我会在这里写些什么？<a href="https://ghostwritten.github.io/blog/About-Me#-%E6%88%91%E4%BC%9A%E5%9C%A8%E8%BF%99%E9%87%8C%E5%86%99%E4%BA%9B%E4%BB%80%E4%B9%88" class="hash-link" aria-label="💡 我会在这里写些什么？的直接链接" title="💡 我会在这里写些什么？的直接链接">​</a></h2>
+<p>这个博客不追求华丽，不追热点，它更像是一份技术人的“成长实录”。</p>
+<p>目前我计划写的内容包括：</p>
+<ul>
+<li>运维日常的经验总结（K8s、Podman、Harbor、OpenShift 等）</li>
+<li>个人效率工具分享（终端美化、快捷脚本、开发环境搭建）</li>
+<li>思考类内容（比如：运维的未来、前端的演变、全栈到底是不是幻觉？）</li>
+</ul>
+<p>有时候也会写些非技术内容，比如读书记录、生活观察、工作感悟。因为我始终相信：</p>
+<blockquote>
+<p>技术是生活的一部分，而不是生活的全部。</p>
+</blockquote>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-与我联系">📢 与我联系<a href="https://ghostwritten.github.io/blog/About-Me#-%E4%B8%8E%E6%88%91%E8%81%94%E7%B3%BB" class="hash-link" aria-label="📢 与我联系的直接链接" title="📢 与我联系的直接链接">​</a></h2>
+<p>技术是一场持续的对话，而非独白。我非常珍视与读者的互动和交流。如果你有任何问题、建议或者想法，欢迎通过以下方式与我联系：</p>
+<ul>
+<li><a href="https://github.com/Ghostwritten" target="_blank" rel="noopener noreferrer">GitHub</a>：查看我的项目和代码实践</li>
+<li>Email（<a href="mailto:1zoxun1@gmail.com" target="_blank" rel="noopener noreferrer">1zoxun1@gmail.com</a>）：技术讨论、内容建议，或者只是想聊聊天</li>
+<li><strong>评论区</strong>：在博客文章下方留言，分享你的想法和经验</li>
+</ul>
+<p>每一次交流都是一次学习的机会，也是技术社区建设的一部分。</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="-最后的一点点仪式感">🔚 最后的一点点仪式感<a href="https://ghostwritten.github.io/blog/About-Me#-%E6%9C%80%E5%90%8E%E7%9A%84%E4%B8%80%E7%82%B9%E7%82%B9%E4%BB%AA%E5%BC%8F%E6%84%9F" class="hash-link" aria-label="🔚 最后的一点点仪式感的直接链接" title="🔚 最后的一点点仪式感的直接链接">​</a></h2>
+<p><strong>GhostWritten</strong>，是我的博客名。</p>
+<p>它源自英国作家 David Mitchell（大卫·米切尔） 的小说《Ghostwritten》（中译：《幽灵代笔》）。这是一部结构极为巧妙、风格多变的小说，它以九个看似毫无关联的故事串联起全球九个角落，描绘出一个有关 命运、联系、传递 与 身份认同 的宏大叙事。</p>
+<p>每一章的主角都像是一位“代笔人”—— 他们讲述着自己的故事，但这些故事之间，却又隐藏着丝丝缕缕的因果关联。</p>
+<p>我喜欢这种感觉：</p>
+<ul>
+<li>
+<p>你说出了一个看似个人的片段，却唤起了别人内心的共鸣。</p>
+</li>
+<li>
+<p>你留下了一段代码，未来的你或者某个陌生人却因此受益。</p>
+</li>
+<li>
+<p>你写下了一篇笔记，在数月后成了自己排忧解难的指南。</p>
+</li>
+</ul>
+<p><strong>GhostWritten</strong>，不只是代笔。
+它是穿越时间和空间的<strong>连接</strong>。</p>
+<p><strong>谢谢你读到这里 🙏</strong></p>
+<hr>
+<blockquote>
+<p><em>Write code like poetry. Write blogs like letters.</em><br>
+<!-- -->—— GhostWritten</p>
+</blockquote>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[MDX Blog Post]]></title>
@@ -41,7 +100,7 @@
 <div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>提示</div><div class="admonitionContent_BuS1"><p>Use the power of React to create interactive blog posts.</p></div></div>
 <!-- -->
 <p>For example, use JSX to create an interactive button:</p>
-<div class="language-js codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-js codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">button onClick</span><span class="token operator" style="color:#393A34">=</span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token arrow operator" style="color:#393A34">=&gt;</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">alert</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">'button clicked!'</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">}</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token maybe-class-name">Click</span><span class="token plain"> me</span><span class="token operator" style="color:#393A34">!</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">button</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代�码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="language-js codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-js codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">button onClick</span><span class="token operator" style="color:#393A34">=</span><span class="token punctuation" style="color:#393A34">{</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token arrow operator" style="color:#393A34">=&gt;</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">alert</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">'button clicked!'</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">}</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token maybe-class-name">Click</span><span class="token plain"> me</span><span class="token operator" style="color:#393A34">!</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">button</span><span class="token operator" style="color:#393A34">&gt;</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="复制代码到剪贴板" title="复制" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <button>Click me!</button>]]></content:encoded>
             <category>Docusaurus</category>
         </item>
